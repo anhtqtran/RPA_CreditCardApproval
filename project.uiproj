@@ -1,0 +1,6 @@
+{
+  "Name": "RPA_CreditCardApproval",
+  "ProjectType": "Process",
+  "Description": "",
+  "MainFile": "Main.xaml"
+}
