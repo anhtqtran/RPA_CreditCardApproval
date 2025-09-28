@@ -1,17 +1,16 @@
 {
-  "name": "RPA_CreditCardApproval",
-  "projectId": "212f9cc2-234d-4fb4-8441-27a55b4ea0ff",
-  "description": "",
+  "name": "CheckCICnOffer",
+  "projectId": "5d9a336e-68f8-4f5d-bc09-fe44cbbf65e9",
+  "description": "Check customer's CIC and offer limit",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "3.1.1",
-    "UiPath.System.Activities": "[25.8.1]",
-    "UiPath.Word.Activities": "[2.2.0]"
+    "UiPath.Excel.Activities": "[3.1.1]",
+    "UiPath.System.Activities": "[25.6.1]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
-  "studioVersion": "25.0.176.0",
+  "studioVersion": "25.0.172.0",
   "projectVersion": "1.0.0",
   "runtimeOptions": {
     "autoDispose": false,
@@ -48,7 +47,7 @@
   "entryPoints": [
     {
       "filePath": "Main.xaml",
-      "uniqueId": "92de4091-5919-4471-8b75-7c7817becdce",
+      "uniqueId": "1b8e43e2-8a5e-4b3a-8ad2-3e1cb09d71f7",
       "input": [],
       "output": []
     }
