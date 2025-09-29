@@ -25,9 +25,25 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Process/CheckCICnOffer/Main.xaml",
+      "Path": "Process/CheckCICnOffer/CheckCICtoOffertoSend.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": null,
+      "VariablesSectionElementsOrder": [
+        "contractPathMain&Sequence_1",
+        "OfferLimit&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/CheckCICnOffer/CreatContract.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "contractPath&Sequence_1",
+        "offerStr&Sequence_1",
+        "fullName&Sequence_1",
+        "dtCIC&Sequence_1"
+      ],
       "ArgumentsSectionElementsOrder": null,
       "ConstantsSectionElementsOrder": null,
       "AddedNamespaces": null
