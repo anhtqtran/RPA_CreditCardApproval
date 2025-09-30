@@ -28,6 +28,7 @@
       "Path": "Process/CheckCICnOffer/CheckCICtoOffertoSend.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "rejectPdfPathMain&Sequence_8",
         "contractPathMain&Sequence_1",
         "OfferLimit&Sequence_1"
       ],
@@ -43,6 +44,19 @@
         "offerStr&Sequence_1",
         "fullName&Sequence_1",
         "dtCIC&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/CheckCICnOffer/RejectCardApplication.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "rejectDocPath&Sequence_1",
+        "msg&Sequence_1",
+        "logPath&Sequence_1",
+        "ts&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": null,
       "ConstantsSectionElementsOrder": null,
