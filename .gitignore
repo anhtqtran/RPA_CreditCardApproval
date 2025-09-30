@@ -1,1 +1,10 @@
+# UiPath specific
 .local/
+.objects/
+.settings/
+.cache/
+*-log.txt
+*.local/
+
+# Windows specific
+Thumbs.db
