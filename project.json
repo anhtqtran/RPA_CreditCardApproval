@@ -5,6 +5,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "3.1.1",
+    "UiPath.IntelligentOCR.Activities": "[6.26.0]",
     "UiPath.Mail.Activities": "[2.4.10]",
     "UiPath.System.Activities": "[25.8.1]",
     "UiPath.Word.Activities": "[2.2.0]"
@@ -36,7 +37,6 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
-      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
