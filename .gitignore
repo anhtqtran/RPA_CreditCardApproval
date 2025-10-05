@@ -5,6 +5,7 @@
 .cache/
 *-log.txt
 *.local/
+Assets/*.json
 
 # Windows specific
 Thumbs.db
