@@ -1,5 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ExtractIDFromDocument" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p3="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ExtractIDFromDocument" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p3="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p6="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_expected_id_number" Type="InArgument(x:String)" />
     <x:Property Name="out_check_status" Type="OutArgument(x:String)" />
     <x:Property Name="out_error_details" Type="OutArgument(x:String)" />
     <x:Property Name="out_extracted_id_number" Type="OutArgument(x:String)" />
@@ -255,13 +256,14 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.SmartData.PositionBasedExtraction</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Api</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="ExtractIDFromDocument" sap:VirtualizedContainerService.HintSize="714,2930.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="ExtractIDFromDocument" sap:VirtualizedContainerService.HintSize="904.8,3950.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="docText" />
-      <Variable x:TypeArguments="p4:ExtractionResult" Name="extractionResults" />
-      <Variable x:TypeArguments="p5:Document" Name="dom" />
+      <Variable x:TypeArguments="p5:ExtractionResult" Name="extractionResults" />
+      <Variable x:TypeArguments="p6:Document" Name="dom" />
       <Variable x:TypeArguments="x:String" Name="documentType" />
       <Variable x:TypeArguments="p:DocumentTaxonomy" Default="[in_taxonomy]" Name="taxonomyVariable" />
       <Variable x:TypeArguments="x:String" Name="vn_id_extracted">
@@ -286,19 +288,19 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Handle potential errors during OCR and data extraction using a Try-Catch block." sap:VirtualizedContainerService.HintSize="580,2876" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Handle potential errors during OCR and data extraction using a Try-Catch block." sap:VirtualizedContainerService.HintSize="904.8,3896" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="578.4,2207.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="903.2,3227.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="544.8,137.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomyVariable]" />
-          <p1:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[dom]" DocumentPath="[in_file_path]" DocumentText="[docText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="544.8,332" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+          <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="869.6,137.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomyVariable]" />
+          <p1:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[dom]" DocumentPath="[in_file_path]" DocumentText="[docText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="869.6,332" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
             <p1:DigitizeDocument.OCREngine>
               <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))" Argument1="{x:Reference __ReferenceID0}" Argument2="{x:Reference __ReferenceID1}">
-                <p2:UiPathDocumentOCR Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="[Nothing]" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,24.8" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000">
+                <p2:UiPathDocumentOCR Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="23x7jRWIvQO4CCDSbldOYkREF50IpYWiyFLVjp/7XK/YE3sSs9gzf6uiGXDBydIslrDQycvasRFXq8zLZr1moA==" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,24.8" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000">
                   <p2:UiPathDocumentOCR.Image>
                     <InArgument x:TypeArguments="sd:Image">
                       <DelegateArgumentValue x:TypeArguments="sd:Image" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_1">
@@ -317,59 +319,151 @@
               </ActivityFunc>
             </p1:DigitizeDocument.OCREngine>
           </p1:DigitizeDocument>
-          <Assign DisplayName="Determine the document type (e.g., &quot;VN_ID&quot;, &quot;Passport&quot;, &quot;Visa&quot;) based on keywords in the input file path." sap:VirtualizedContainerService.HintSize="544.8,115.2" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Determine the document type (e.g., &quot;VN_ID&quot;, &quot;Passport&quot;, &quot;Visa&quot;) based on keywords in the input file path." sap:VirtualizedContainerService.HintSize="869.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[documentType]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(in_file_path.Contains("id_front"), "NoGroup.NoCategory.VN_ID",
-          If(in_file_path.Contains("passport"), "NoGroup.NoCategory.Passport",
-             If(in_file_path.Contains("visa"), "NoGroup.NoCategory.Visa", "")))]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(in_file_path.ToLower.Contains("id_back"), "SKIP_BACK",
+   If(in_file_path.ToLower.Contains("id_front") OrElse in_file_path.ToLower.Contains("id_"), "NoGroup.NoCategory.VN_ID",
+      If(in_file_path.ToLower.Contains("passport"), "NoGroup.NoCategory.Passport",
+         If(in_file_path.ToLower.Contains("visa"), "NoGroup.NoCategory.Visa",
+            If(in_file_path.ToLower.Contains("income"), "SKIP_EXTRACTION", "")))))]</InArgument>
             </Assign.Value>
           </Assign>
-          <p3:DataExtractionScope ClassificationResult="{x:Null}" RuntimeAssetPath="{x:Null}" RuntimeTenantUrl="{x:Null}" ApplyGenerativeValidation="False" DisplayName="Data Extraction Scope" DocumentObjectModel="[dom]" DocumentPath="[in_file_path]" DocumentText="[docText]" DocumentTypeId="[documentType]" ExtractionResult="[extractionResults]" FormatValuesIfPossible="True" GenerativeValidationConfidenceThreshold="99" sap:VirtualizedContainerService.HintSize="544.8,383.2" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[in_taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{},&quot;ExtractorMinimumConfidence&quot;:{},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{}}">
-            <p3:DataExtractionScope.AvailableAssetPaths>
-              <x:Array Type="x:String">
-                <x:String>Shared/myacc</x:String>
-              </x:Array>
-            </p3:DataExtractionScope.AvailableAssetPaths>
-            <p3:DataExtractionScope.Extractors>
-              <ui:GoogleCloudOCR ApiKey="{x:Null}" FilterRegion="{x:Null}" Image="{x:Null}" Language="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Profile="{x:Null}" Region="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DetectionMode="TextDetection" DisplayName="Google Cloud Vision OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="382.4,24.8" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_1" NoopExecution="False" ResizeToApiLimits="False" />
-            </p3:DataExtractionScope.Extractors>
-          </p3:DataExtractionScope>
-          <Assign sap:VirtualizedContainerService.HintSize="544.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <If Condition="[documentType = &quot;SKIP_BACK&quot; OrElse documentType = &quot;SKIP_EXTRACTION&quot;]" sap:VirtualizedContainerService.HintSize="869.6,937.6" sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Then>
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="868,225.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="834.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Skip extraction cho file: &quot; + in_file_path + &quot; (Type: &quot; + documentType + &quot;)&quot;]" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="868,573.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <p3:DataExtractionScope ClassificationResult="{x:Null}" RuntimeAssetPath="{x:Null}" RuntimeTenantUrl="{x:Null}" ApplyGenerativeValidation="False" DisplayName="Data Extraction Scope" DocumentObjectModel="[dom]" DocumentPath="[in_file_path]" DocumentText="[docText]" DocumentTypeId="[documentType]" ExtractionResult="[extractionResults]" FormatValuesIfPossible="True" GenerativeValidationConfidenceThreshold="99" sap:VirtualizedContainerService.HintSize="834.4,513.6" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[in_taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIe673d105d5fe4af6be6c587e82ed645a&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;NoGroup.NoCategory.VN_ID&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:&quot;&quot;},&quot;NoGroup.NoCategory.Passport&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.Passport.so_ho_chieu&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Passport.so_ho_chieu&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;NoGroup.NoCategory.Visa&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.Visa.so_visa&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Visa.so_visa&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UIe673d105d5fe4af6be6c587e82ed645a&quot;:&quot;80&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UIe673d105d5fe4af6be6c587e82ed645a&quot;:[]}}">
+                  <p3:DataExtractionScope.AvailableAssetPaths>
+                    <x:Array Type="x:String">
+                      <x:String>Shared/myacc</x:String>
+                    </x:Array>
+                  </p3:DataExtractionScope.AvailableAssetPaths>
+                  <p3:DataExtractionScope.Extractors>
+                    <p3:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="23x7jRWIvQO4CCDSbldOYkREF50IpYWiyFLVjp/7XK/YE3sSs9gzf6uiGXDBydIslrDQycvasRFXq8zLZr1moA==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="382.4,164" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIe673d105d5fe4af6be6c587e82ed645a" SendDocumentsForAlgorithmImprovements="True" SerializedSettings="{}{&quot;DocTypeSettings&quot;:[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.VN_ID&quot;,&quot;SignatureFields&quot;:[{&quot;FieldId&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;}],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[&quot;Yes&quot;,&quot;X&quot;,&quot;V&quot;,&quot;✓&quot;,&quot;✔&quot;],&quot;BooleanSynonymsForNo&quot;:[&quot;No&quot;],&quot;CaseSensitiveSynonyms&quot;:true},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Passport&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[],&quot;BooleanSynonymsForNo&quot;:[],&quot;CaseSensitiveSynonyms&quot;:false},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Visa&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[],&quot;BooleanSynonymsForNo&quot;:[],&quot;CaseSensitiveSynonyms&quot;:false}]}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.VN_ID&quot;,&quot;FormId&quot;:&quot;bc0931b7&quot;,&quot;FormName&quot;:&quot;maucccd&quot;,&quot;OriginalFileExtension&quot;:&quot;jpg&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,1310.0,850.0],&quot;SkewAngle&quot;:-0.1,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;CĂN&quot;,&quot;Box&quot;:[213.0,504.0,143.0,70.0]},{&quot;Text&quot;:&quot;CU&quot;,&quot;Box&quot;:[224.0,662.0,85.0,57.0]},{&quot;Text&quot;:&quot;CONG&quot;,&quot;Box&quot;:[66.0,373.0,97.0,37.0]},{&quot;Text&quot;:&quot;HÒA&quot;,&quot;Box&quot;:[62.0,475.0,73.0,36.0]},{&quot;Text&quot;:&quot;XÃ&quot;,&quot;Box&quot;:[62.0,549.0,51.0,36.0]},{&quot;Text&quot;:&quot;HOI&quot;,&quot;Box&quot;:[66.0,602.0,60.0,38.0]},{&quot;Text&quot;:&quot;CHŮ&quot;,&quot;Box&quot;:[62.0,666.0,70.0,36.0]},{&quot;Text&quot;:&quot;NGHÍA&quot;,&quot;Box&quot;:[61.0,741.0,106.0,37.0]},{&quot;Text&quot;:&quot;VIET&quot;,&quot;Box&quot;:[65.0,847.0,74.0,39.0]},{&quot;Text&quot;:&quot;NAM&quot;,&quot;Box&quot;:[68.0,925.0,75.0,30.0]},{&quot;Text&quot;:&quot;Đôc&quot;,&quot;Box&quot;:[104.0,513.0,53.0,30.0]},{&quot;Text&quot;:&quot;lâp&quot;,&quot;Box&quot;:[103.0,569.0,41.0,31.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[107.0,612.0,14.0,24.0]},{&quot;Text&quot;:&quot;Tu&quot;,&quot;Box&quot;:[104.0,627.0,41.0,30.0]},{&quot;Text&quot;:&quot;do&quot;,&quot;Box&quot;:[104.0,669.0,36.0,25.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[109.0,707.0,14.0,21.0]},{&quot;Text&quot;:&quot;Hanh&quot;,&quot;Box&quot;:[104.0,723.0,67.0,30.0]},{&quot;Text&quot;:&quot;phúc&quot;,&quot;Box&quot;:[104.0,794.0,66.0,31.0]},{&quot;Text&quot;:&quot;SOCIALIST&quot;,&quot;Box&quot;:[141.0,465.0,141.0,27.0]},{&quot;Text&quot;:&quot;REPUBLIC&quot;,&quot;Box&quot;:[141.0,606.0,132.0,27.0]},{&quot;Text&quot;:&quot;OF&quot;,&quot;Box&quot;:[141.0,742.0,40.0,27.0]},{&quot;Text&quot;:&quot;VIET&quot;,&quot;Box&quot;:[142.0,784.0,61.0,25.0]},{&quot;Text&quot;:&quot;NAM&quot;,&quot;Box&quot;:[142.0,844.0,63.0,26.0]},{&quot;Text&quot;:&quot;Independence&quot;,&quot;Box&quot;:[167.0,473.0,162.0,31.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[169.0,639.0,12.0,23.0]},{&quot;Text&quot;:&quot;Freedom&quot;,&quot;Box&quot;:[167.0,653.0,105.0,26.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[171.0,762.0,12.0,22.0]},{&quot;Text&quot;:&quot;Happiness&quot;,&quot;Box&quot;:[166.0,777.0,122.0,32.0]},{&quot;Text&quot;:&quot;Identity&quot;,&quot;Box&quot;:[310.0,523.0,107.0,38.0]},{&quot;Text&quot;:&quot;Card&quot;,&quot;Box&quot;:[311.0,630.0,72.0,30.0]},{&quot;Text&quot;:&quot;Só&quot;,&quot;Box&quot;:[372.0,387.0,46.0,37.0]},{&quot;Text&quot;:&quot;đjnh&quot;,&quot;Box&quot;:[378.0,439.0,71.0,36.0]},{&quot;Text&quot;:&quot;danh&quot;,&quot;Box&quot;:[378.0,515.0,81.0,30.0]},{&quot;Text&quot;:&quot;cá&quot;,&quot;Box&quot;:[378.0,602.0,39.0,31.0]},{&quot;Text&quot;:&quot;nhân&quot;,&quot;Box&quot;:[378.0,646.0,80.0,30.0]},{&quot;Text&quot;:&quot;/&quot;,&quot;Box&quot;:[378.0,726.0,21.0,31.0]},{&quot;Text&quot;:&quot;No:&quot;,&quot;Box&quot;:[378.0,745.0,47.0,30.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;,&quot;Box&quot;:[367.3855,805.0279,368.8492,49.7654]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
+                      <p3:FormExtractor.DocumentBounds>
+                        <InArgument x:TypeArguments="p5:ResultsDocumentBounds">
+                          <DelegateArgumentValue x:TypeArguments="p5:ResultsDocumentBounds">
+                            <DelegateInArgument x:TypeArguments="p5:ResultsDocumentBounds" Name="DocumentBounds" />
+                          </DelegateArgumentValue>
+                        </InArgument>
+                      </p3:FormExtractor.DocumentBounds>
+                      <p3:FormExtractor.DocumentObjectModel>
+                        <InArgument x:TypeArguments="p6:Document">
+                          <DelegateArgumentValue x:TypeArguments="p6:Document">
+                            <DelegateInArgument x:TypeArguments="p6:Document" Name="DocumentObjectModel" />
+                          </DelegateArgumentValue>
+                        </InArgument>
+                      </p3:FormExtractor.DocumentObjectModel>
+                      <p3:FormExtractor.DocumentPath>
+                        <InArgument x:TypeArguments="x:String">
+                          <DelegateArgumentValue x:TypeArguments="x:String">
+                            <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                          </DelegateArgumentValue>
+                        </InArgument>
+                      </p3:FormExtractor.DocumentPath>
+                      <p3:FormExtractor.DocumentText>
+                        <InArgument x:TypeArguments="x:String">
+                          <DelegateArgumentValue x:TypeArguments="x:String">
+                            <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                          </DelegateArgumentValue>
+                        </InArgument>
+                      </p3:FormExtractor.DocumentText>
+                      <p3:FormExtractor.ExtractorDocumentType>
+                        <InArgument x:TypeArguments="p4:ExtractorDocumentType">
+                          <DelegateArgumentValue x:TypeArguments="p4:ExtractorDocumentType">
+                            <DelegateInArgument x:TypeArguments="p4:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                          </DelegateArgumentValue>
+                        </InArgument>
+                      </p3:FormExtractor.ExtractorDocumentType>
+                      <p3:FormExtractor.ExtractorResult>
+                        <OutArgument x:TypeArguments="p4:ExtractorResult">
+                          <DelegateArgumentReference x:TypeArguments="p4:ExtractorResult">
+                            <DelegateOutArgument x:TypeArguments="p4:ExtractorResult" Name="ExtractorResult" />
+                          </DelegateArgumentReference>
+                        </OutArgument>
+                      </p3:FormExtractor.ExtractorResult>
+                      <p3:FormExtractor.PredictionId>
+                        <InArgument x:TypeArguments="x:String">
+                          <DelegateArgumentValue x:TypeArguments="x:String">
+                            <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+                          </DelegateArgumentValue>
+                        </InArgument>
+                      </p3:FormExtractor.PredictionId>
+                    </p3:FormExtractor>
+                    <ui:GoogleCloudOCR ApiKey="{x:Null}" FilterRegion="{x:Null}" Image="{x:Null}" Language="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Profile="{x:Null}" Region="{x:Null}" Scale="{x:Null}" Text="{x:Null}" ComputeSkewAngle="False" DetectionMode="TextDetection" DisplayName="Google Cloud Vision OCR" ExtractWords="False" sap:VirtualizedContainerService.HintSize="382.4,164" sap2010:WorkflowViewState.IdRef="GoogleCloudOCR_1" NoopExecution="False" ResizeToApiLimits="False" />
+                  </p3:DataExtractionScope.Extractors>
+                </p3:DataExtractionScope>
+              </Sequence>
+            </If.Else>
+          </If>
+          <Assign sap:VirtualizedContainerService.HintSize="869.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_9">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[vn_id_extracted]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[If(documentType = "NoGroup.NoCategory.VN_ID" AndAlso extractionResults IsNot Nothing AndAlso extractionResults.ResultsDocument IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields.Any(Function(f) f.FieldId = "so_cmnd"), If(extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_cmnd").Values.Any(), If(extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_cmnd").Values.FirstOrDefault().Value IsNot Nothing, extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_cmnd").Values.FirstOrDefault().Value.ToString(), ""), ""), "")]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(documentType &lt;&gt; "NoGroup.NoCategory.VN_ID", "",
+   If(extractionResults IsNot Nothing AndAlso extractionResults.ResultsDocument IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields.Any(Function(f) f.FieldId = "so_cmnd"),
+      If(extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_cmnd").Values.Any() AndAlso extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_cmnd").Values.FirstOrDefault().Value IsNot Nothing,
+         extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_cmnd").Values.FirstOrDefault().Value.ToString(),
+         System.Text.RegularExpressions.Regex.Match(docText, "\b\d{9,12}\b").Value),
+      System.Text.RegularExpressions.Regex.Match(docText, "\b\d{9,12}\b").Value))]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="544.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+          <Assign sap:VirtualizedContainerService.HintSize="869.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_10">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[passport_id_extracted]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[If(documentType = "NoGroup.NoCategory.Passport" AndAlso extractionResults IsNot Nothing AndAlso extractionResults.ResultsDocument IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields.Any(Function(f) f.FieldId = "so_ho_chieu"), If(extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_ho_chieu").Values.Any(), If(extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_ho_chieu").Values.FirstOrDefault().Value IsNot Nothing, extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_ho_chieu").Values.FirstOrDefault().Value.ToString(), ""), ""), "")]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(documentType &lt;&gt; "NoGroup.NoCategory.Passport", "",
+   If(extractionResults IsNot Nothing AndAlso extractionResults.ResultsDocument IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields.Any(Function(f) f.FieldId = "so_ho_chieu"),
+      If(extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_ho_chieu").Values.Any() AndAlso extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_ho_chieu").Values.FirstOrDefault().Value IsNot Nothing,
+         extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_ho_chieu").Values.FirstOrDefault().Value.ToString(),
+         System.Text.RegularExpressions.Regex.Match(docText, "\b[A-Z0-9]{8,9}\b").Value),
+      System.Text.RegularExpressions.Regex.Match(docText, "\b[A-Z0-9]{8,9}\b").Value))]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="544.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <Assign sap:VirtualizedContainerService.HintSize="869.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[visa_id_extracted]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[If(documentType = "NoGroup.NoCategory.Visa" AndAlso extractionResults IsNot Nothing AndAlso extractionResults.ResultsDocument IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields.Any(Function(f) f.FieldId = "so_visa"), If(extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_visa").Values.Any(), If(extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_visa").Values.FirstOrDefault().Value IsNot Nothing, extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_visa").Values.FirstOrDefault().Value.ToString(), ""), ""), "")]</InArgument>
+              <InArgument x:TypeArguments="x:String">[If(documentType &lt;&gt; "NoGroup.NoCategory.Visa", "", If(extractionResults IsNot Nothing AndAlso extractionResults.ResultsDocument IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields IsNot Nothing AndAlso extractionResults.ResultsDocument.Fields.Any(Function(f) f.FieldId = "so_visa"), If(extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_visa").Values.Any() AndAlso extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_visa").Values.FirstOrDefault().Value IsNot Nothing, extractionResults.ResultsDocument.Fields.FirstOrDefault(Function(f) f.FieldId = "so_visa").Values.FirstOrDefault().Value.ToString(), System.Text.RegularExpressions.Regex.Match(docText, "\b[A-Z0-9]{8}\b").Value), System.Text.RegularExpressions.Regex.Match(docText, "\b[A-Z0-9]{8}\b").Value))]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="544.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+          <Assign sap:VirtualizedContainerService.HintSize="869.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[in_expected_id_number]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[If(documentType = "SKIP_BACK", in_expected_id_number, If(documentType = "SKIP_EXTRACTION", "SKIP_EXTRACTION", If(documentType = "NoGroup.NoCategory.VN_ID", vn_id_extracted, If(documentType = "NoGroup.NoCategory.Passport", passport_id_extracted, If(documentType = "NoGroup.NoCategory.Visa", visa_id_extracted, "")))))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="869.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[out_extracted_id_number]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[If(documentType = "NoGroup.NoCategory.VN_ID", vn_id_extracted, If(documentType = "NoGroup.NoCategory.Passport", passport_id_extracted, If(documentType = "NoGroup.NoCategory.Visa", visa_id_extracted, "")))]</InArgument>
+              <InArgument x:TypeArguments="x:String">[If(documentType = "SKIP_BACK", "", If(documentType = "SKIP_EXTRACTION", "SKIP_EXTRACTION", If(documentType = "NoGroup.NoCategory.VN_ID", vn_id_extracted, If(documentType = "NoGroup.NoCategory.Passport", passport_id_extracted, If(documentType = "NoGroup.NoCategory.Visa", visa_id_extracted, "")))))]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Initialize the output status to &quot;PASS&quot; and error details to empty." sap:VirtualizedContainerService.HintSize="544.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign DisplayName="Initialize the output status to &quot;PASS&quot; and error details to empty." sap:VirtualizedContainerService.HintSize="869.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[out_check_status]</OutArgument>
             </Assign.To>
@@ -377,7 +471,7 @@
               <InArgument x:TypeArguments="x:String">["PASS"]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Initialize the output status to &quot;PASS&quot; and error details to empty." sap:VirtualizedContainerService.HintSize="544.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign DisplayName="Initialize the output status to &quot;PASS&quot; and error details to empty." sap:VirtualizedContainerService.HintSize="869.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[out_error_details]</OutArgument>
             </Assign.To>
@@ -385,14 +479,15 @@
               <InArgument x:TypeArguments="x:String">[""]</InArgument>
             </Assign.Value>
           </Assign>
-          <If Condition="[String.IsNullOrWhiteSpace(out_extracted_id_number)]" DisplayName="Check if the ID number extraction was successful." sap:VirtualizedContainerService.HintSize="544.8,497.6" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[String.IsNullOrWhiteSpace(out_extracted_id_number) AndAlso out_extracted_id_number &lt;&gt; &quot;SKIP_EXTRACTION&quot; AndAlso documentType &lt;&gt; &quot;SKIP_BACK&quot;]" DisplayName="Check if the ID number extraction was successful." sap:VirtualizedContainerService.HintSize="869.6,680.8" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
-              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468.8,278.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468.8,452.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="435.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Không trích xuất được ID number từ document: &quot; + in_file_path]" />
                 <Assign DisplayName="If the ID number is empty or whitespace, set the output status to &quot;REJECT&quot; and provide an error message." sap:VirtualizedContainerService.HintSize="435.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[out_check_status]</OutArgument>
@@ -421,6 +516,7 @@
               </Sequence>
             </If.Else>
           </If>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="869.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;DocType: &quot; + documentType + &quot; | DocText preview: &quot; + docText.Substring(0, Math.Min(200, docText.Length)) + &quot; | Extracted ID: &quot; + out_extracted_id_number]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
@@ -429,13 +525,13 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="578.4,278.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="903.2,278.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="544.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign sap:VirtualizedContainerService.HintSize="869.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[out_check_status]</OutArgument>
                 </Assign.To>
@@ -443,7 +539,7 @@
                   <InArgument x:TypeArguments="x:String">FAILED</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign sap:VirtualizedContainerService.HintSize="544.8,104.8" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign sap:VirtualizedContainerService.HintSize="869.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_8">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[out_error_details]</OutArgument>
                 </Assign.To>
@@ -456,13 +552,13 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="578.4,225.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="903.2,225.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log a message indicating the completion of the ID extraction for the input file." sap:VirtualizedContainerService.HintSize="544.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extract ID hoàn tất cho file: &quot; + in_file_path]" />
+          <ui:LogMessage DisplayName="Log a message indicating the completion of the ID extraction for the input file." sap:VirtualizedContainerService.HintSize="869.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extract ID hoàn tất cho file: &quot; + in_file_path]" />
         </Sequence>
       </TryCatch.Finally>
     </TryCatch>
