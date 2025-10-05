@@ -37,6 +37,7 @@
       <x:String>UiPath.CSV.Activities</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>System.Globalization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -100,13 +101,19 @@
       <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="700,3454.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="698,3584" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="contractPathMain" />
       <Variable x:TypeArguments="x:Decimal" Name="OfferLimit" />
-      <Variable x:TypeArguments="x:Decimal" Name="income" />
+      <Variable x:TypeArguments="x:Decimal" Name="income">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="x:Decimal" ExpressionText="0D" />
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="sd:DataTable" Name="dtCIC" />
       <Variable x:TypeArguments="x:String" Name="custID" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtIncome" />
@@ -123,7 +130,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="506,278" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="CCCD" Title="CCCD" TopMost="False">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="506,278" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Số định danh công dân" Title="Số định danh công dân" TopMost="False">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[custID]</OutArgument>
       </ui:InputDialog.Result>
@@ -137,46 +144,47 @@
       </Assign.Value>
     </Assign>
     <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtCIC]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="506,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Data\cic_reports.xlsx" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtCIC]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="506,888" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtCIC]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="506,634.6666666666666" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="504,704" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="504,450.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[CurrentRow(&quot;id_number&quot;).ToString.Trim.Equals(custID.Trim, StringComparison.OrdinalIgnoreCase)]" sap:VirtualizedContainerService.HintSize="470,644" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[CurrentRow(&quot;id_number&quot;).ToString.Trim.Equals(custID.Trim, StringComparison.OrdinalIgnoreCase)]" sap:VirtualizedContainerService.HintSize="470,390.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,344" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,169.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign sap:VirtualizedContainerService.HintSize="434,109.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[CIC_score]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[CInt( If(IsDBNull(CurrentRow("score")), -1, CurrentRow("score")) )]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" xml:space="preserve">[If(
+    IsDBNull(CurrentRow("score")) OrElse String.IsNullOrEmpty(CurrentRow("score").ToString.Trim),
+    0,
+    CInt(CurrentRow("score"))
+)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,118.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Điểm CIC của khách hàng &quot; &amp; custID &amp; &quot; là: &quot; &amp; CIC_score.ToString]" />
-                  <ui:Break sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="Break_5" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,169.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Không tìm thấy điểm CIC của khách hàng &quot; &amp; custID]" />
                 </Sequence>
               </If.Else>
             </If>
@@ -184,36 +192,63 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
+    <If Condition="[CIC_score = -1]" sap:VirtualizedContainerService.HintSize="506,478.6666666666667" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,169.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="416,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Không tìm thấy CIC của khách hàng &quot; &amp; custID]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,169.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="416,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;Điểm CIC của khách hàng &quot; &amp; custID &amp; &quot; là: &quot; &amp; CIC_score.ToString]" />
+        </Sequence>
+      </If.Else>
+    </If>
     <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtIncome]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="506,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="Data\incomes_detailed.xlsx" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtIncome]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="506,1386.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtIncome]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="506,753.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="504,1202.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="504,569.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[CurrentRow(&quot;id_number&quot;).ToString.Trim.Equals(custID.Trim, StringComparison.OrdinalIgnoreCase) _&#xD;&#xA;OrElse&#xD;&#xA;CurrentRow(&quot;visa_number&quot;).ToString.Trim.Equals(custID.Trim, StringComparison.OrdinalIgnoreCase)]" sap:VirtualizedContainerService.HintSize="470,517.3333333333334" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[CurrentRow(&quot;id_number&quot;).ToString.Trim.Equals(custID.Trim, StringComparison.OrdinalIgnoreCase) _&#xA;OrElse&#xA;CurrentRow(&quot;visa_number&quot;).ToString.Trim.Equals(custID.Trim, StringComparison.OrdinalIgnoreCase)]" sap:VirtualizedContainerService.HintSize="470,509.3333333333333" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,286.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,288" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign sap:VirtualizedContainerService.HintSize="434,118.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_3">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Decimal">[income]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:Decimal">[CDec( If(IsDBNull(CurrentRow("incomes")), 0, CurrentRow("incomes")) )]</InArgument>
+                      <InArgument x:TypeArguments="x:Decimal" xml:space="preserve">[If(
+    IsDBNull(CurrentRow("incomes")) OrElse
+    String.IsNullOrWhiteSpace(CurrentRow("incomes").ToString),
+    0D,
+    CDec(CurrentRow("incomes"))
+)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Thu nhập của khách hàng đó là: &quot; &amp; income.ToString()]" />
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Thu nhập của khách hàng là: &quot; &amp; income.ToString(&quot;N0&quot;, New System.Globalization.CultureInfo(&quot;vi-VN&quot;))]" />
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -226,59 +261,58 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[income=0]" sap:VirtualizedContainerService.HintSize="470,625.3333333333334" sap2010:WorkflowViewState.IdRef="If_3">
-              <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,404" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="416,118.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Khách hàng chưa có thu nhập&quot;]" />
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="RejectCardApplication - Invoke Workflow File (Process\CheckCICnOffer\RejectCardApplication.xaml)" sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Process\CheckCICnOffer\RejectCardApplication.xaml">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_rejectPdfPath">[rejectPdfPathMain]</OutArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_templateRejectPath">[System.IO.Path.Combine(path,"Templates","RejectTemplate.docx")]</InArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_decisionMsg" />
-                      <InArgument x:TypeArguments="x:String" x:Key="in_outputFolder">[System.IO.Path.Combine(path,"Output")]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_reason">Không tìm thấy thu nhập</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_custID">[custID]</InArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                  </ui:InvokeWorkflowFile>
-                  <ui:Break sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Break_7" />
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Sequence>
-              </If.Else>
-            </If>
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CreatLimit - Invoke Workflow File (Process\CheckCICnOffer\CreatLimit.xaml)" sap:VirtualizedContainerService.HintSize="506,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\CheckCICnOffer\CreatLimit.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:Decimal" x:Key="out_limit">[OfferLimit]</OutArgument>
-        <InArgument x:TypeArguments="x:Decimal" x:Key="in_income">[income]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_CICScore">[CIC_score]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="506,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[Main] Sau CreateLimit, OfferLimit = &quot; &amp; OfferLimit.ToString()]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CreatContract - Invoke Workflow File (Process\CheckCICnOffer\CreatContract.xaml)" sap:VirtualizedContainerService.HintSize="506,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\CheckCICnOffer\CreatContract.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_contractPath">[contractPathMain]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_outputFolder">[System.IO.Path.Combine(path, "Output")]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_templatePath">[System.IO.Path.Combine(path, "Templates", "ContractTemplate.docx")]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_cicFilePath">[System.IO.Path.Combine(path, "Data", "cic_reports.xlsx")]</InArgument>
-        <InArgument x:TypeArguments="x:Decimal" x:Key="in_offerLimit">[OfferLimit]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_custID">[custID]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
+    <If Condition="[income=0D]" sap:VirtualizedContainerService.HintSize="506,1059.3333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,346.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="416,118.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Khách hàng chưa có thu nhập&quot;]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="RejectCardApplication - Invoke Workflow File (Process\CheckCICnOffer\RejectCardApplication.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Process\CheckCICnOffer\RejectCardApplication.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_rejectPdfPath">[rejectPdfPathMain]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_templateRejectPath">[System.IO.Path.Combine(path,"Templates","RejectTemplate.docx")]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_decisionMsg" />
+              <InArgument x:TypeArguments="x:String" x:Key="in_outputFolder">[System.IO.Path.Combine(path,"Output")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_reason">Không tìm thấy thu nhập</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_custID">[custID]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,582" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CreatLimit - Invoke Workflow File (Process\CheckCICnOffer\CreatLimit.xaml)" sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\CheckCICnOffer\CreatLimit.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="x:Decimal" x:Key="out_limit">[OfferLimit]</OutArgument>
+              <InArgument x:TypeArguments="x:Decimal" x:Key="in_income">[income]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_CICScore">[CIC_score]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[Main] Sau CreateLimit, OfferLimit = &quot; &amp; OfferLimit.ToString()]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CreatContract - Invoke Workflow File (Process\CheckCICnOffer\CreatContract.xaml)" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\CheckCICnOffer\CreatContract.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_contractPath">[contractPathMain]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_outputFolder">[System.IO.Path.Combine(path, "Output")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_templatePath">[System.IO.Path.Combine(path, "Templates", "ContractTemplate.docx")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_cicFilePath">[System.IO.Path.Combine(path, "Data", "cic_reports.xlsx")]</InArgument>
+              <InArgument x:TypeArguments="x:Decimal" x:Key="in_offerLimit">[OfferLimit]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_custID">[custID]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
