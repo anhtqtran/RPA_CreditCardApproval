@@ -1,18 +1,8 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CheckMissingField" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p2="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p5="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p6="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uisad="clr-namespace:UiPath.IntelligentOCR.StudioWeb.Activities.DocumentClassification;assembly=UiPath.IntelligentOCR.StudioWeb.Activities" xmlns:uisad1="clr-namespace:UiPath.IntelligentOCR.StudioWeb.Activities.DataExtraction;assembly=UiPath.IntelligentOCR.StudioWeb.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CheckMissingField" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="error_details" Type="OutArgument(x:String)" />
-    <x:Property Name="check_status" Type="OutArgument(x:String)" />
-    <x:Property Name="income_proof_file" Type="InArgument(x:String)" />
-    <x:Property Name="visa_file" Type="InArgument(x:String)" />
-    <x:Property Name="passport_file" Type="InArgument(x:String)" />
-    <x:Property Name="id_back_file" Type="InArgument(x:String)" />
-    <x:Property Name="id_front_file" Type="InArgument(x:String)" />
-    <x:Property Name="declared_income" Type="InArgument(x:Double)" />
-    <x:Property Name="nationality" Type="InArgument(x:String)" />
-    <x:Property Name="dob" Type="InArgument(s:DateTime)" />
-    <x:Property Name="full_name" Type="InArgument(x:String)" />
-    <x:Property Name="id_number" Type="InArgument(x:String)" />
-    <x:Property Name="application_id" Type="InArgument(x:String)" />
+    <x:Property Name="out_check_status" Type="OutArgument(x:String)" />
+    <x:Property Name="out_error_details" Type="OutArgument(x:String)" />
+    <x:Property Name="in_application_id" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -48,7 +38,7 @@
       <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>UiPath.Activities.System.Text</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
-      <x:String>Microsoft</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
       <x:String>Microsoft.Win32.SafeHandles</x:String>
       <x:String>System.Numerics</x:String>
       <x:String>System.Net</x:String>
@@ -111,9 +101,6 @@
       <x:String>System.Xml.XPath</x:String>
       <x:String>System.Xml.Resolvers</x:String>
       <x:String>System.Xml.Serialization</x:String>
-      <x:String>Microsoft.CodeAnalysis</x:String>
-      <x:String>Microsoft.CodeAnalysis.VisualBasic</x:String>
-      <x:String>Microsoft.CodeAnalysis.VisualBasic.Syntax</x:String>
       <x:String>Microsoft.VisualBasic.FileIO</x:String>
       <x:String>System.Security.Authentication</x:String>
       <x:String>System.Net.Cache</x:String>
@@ -121,180 +108,182 @@
       <x:String>System.Net.Security</x:String>
       <x:String>System.Net.Sockets</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Excel.Enums</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Files.Models</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Models</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Excel</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
-      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.DocumentClassification</x:String>
-      <x:String>UiPath.IntelligentOCR.DataExtraction</x:String>
-      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.DataExtraction</x:String>
-      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
-      <x:String>UiPath.DocumentProcessing.Contracts.Classification</x:String>
-      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
-      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
-      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities</x:String>
-      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
-      <x:String>UiPath.Vision.OCR</x:String>
-      <x:String>UiPath.OCR.Contracts</x:String>
-      <x:String>UiPath.OCR.Activities</x:String>
-      <x:String>UiPath.OCR.Contracts.Activities</x:String>
-      <x:String>UiPath.FTP.Activities</x:String>
-      <x:String>UiPath.IntelligentOCR.Activities.Digitization</x:String>
-      <x:String>UiPath</x:String>
-      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
-      <x:String>UiPath.IntelligentOCR.Activities.DataExtraction</x:String>
-      <x:String>UiPath.IntelligentOCR.StudioWeb.Activities.DataValidation</x:String>
-      <x:String>UiPath.DocumentProcessing.Contracts.Actions</x:String>
-      <x:String>UiPath.IntelligentOCR.Actions.Abstractions</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Contracts</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Contracts</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities</x:String>
       <x:String>UiPath.IntelligentOCR.Activities.TaxonomyManagement</x:String>
-      <x:String>UiPath.SmartData.PositionBasedExtraction.Storage</x:String>
+      <x:String>Microsoft</x:String>
+      <x:String>Microsoft.CodeAnalysis</x:String>
+      <x:String>Microsoft.CodeAnalysis.VisualBasic</x:String>
+      <x:String>Microsoft.CodeAnalysis.VisualBasic.Syntax</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
-      <AssemblyReference>Microsoft.CodeAnalysis.Features</AssemblyReference>
-      <AssemblyReference>Microsoft.CodeAnalysis.VisualBasic</AssemblyReference>
-      <AssemblyReference>Microsoft.PowerShell.Commands.Diagnostics</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualStudio.Validation</AssemblyReference>
-      <AssemblyReference>Microsoft.Win32.Registry</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
-      <AssemblyReference>NPOI.Core</AssemblyReference>
-      <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
-      <AssemblyReference>System.CodeDom</AssemblyReference>
-      <AssemblyReference>System.Collections</AssemblyReference>
-      <AssemblyReference>System.Collections.Concurrent</AssemblyReference>
-      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
-      <AssemblyReference>System.ComponentModel</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
-      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
-      <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
-      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.DiagnosticSource</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.FileVersionInfo</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.PerformanceCounter</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.StackTrace</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.TextWriterTraceListener</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.TraceSource</AssemblyReference>
       <AssemblyReference>System.Drawing</AssemblyReference>
       <AssemblyReference>System.Drawing.Common</AssemblyReference>
       <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
-      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
-      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
-      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
-      <AssemblyReference>System.IO.MemoryMappedFiles</AssemblyReference>
-      <AssemblyReference>System.IO.Packaging</AssemblyReference>
-      <AssemblyReference>System.IO.Pipes</AssemblyReference>
       <AssemblyReference>System.Linq</AssemblyReference>
-      <AssemblyReference>System.Linq.Async</AssemblyReference>
-      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
-      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
-      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
-      <AssemblyReference>System.Memory</AssemblyReference>
-      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
       <AssemblyReference>System.Net.Mail</AssemblyReference>
-      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
-      <AssemblyReference>System.Net.NetworkInformation</AssemblyReference>
-      <AssemblyReference>System.Net.Ping</AssemblyReference>
-      <AssemblyReference>System.Net.Primitives</AssemblyReference>
-      <AssemblyReference>System.Net.Requests</AssemblyReference>
-      <AssemblyReference>System.Net.Security</AssemblyReference>
-      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
-      <AssemblyReference>System.Net.Sockets</AssemblyReference>
-      <AssemblyReference>System.Net.WebClient</AssemblyReference>
-      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
-      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Private.Uri</AssemblyReference>
-      <AssemblyReference>System.Private.Xml</AssemblyReference>
-      <AssemblyReference>System.Private.Xml.Linq</AssemblyReference>
-      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
-      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
-      <AssemblyReference>System.Resources.Writer</AssemblyReference>
-      <AssemblyReference>System.Runtime.CompilerServices.VisualC</AssemblyReference>
-      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
-      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
-      <AssemblyReference>System.Security.Claims</AssemblyReference>
-      <AssemblyReference>System.Security.Cryptography</AssemblyReference>
-      <AssemblyReference>System.Security.Cryptography.Pkcs</AssemblyReference>
-      <AssemblyReference>System.Security.Cryptography.ProtectedData</AssemblyReference>
-      <AssemblyReference>System.Security.Permissions</AssemblyReference>
-      <AssemblyReference>System.Security.Principal.Windows</AssemblyReference>
-      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
-      <AssemblyReference>System.Text.Encodings.Web</AssemblyReference>
-      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
-      <AssemblyReference>System.Threading</AssemblyReference>
-      <AssemblyReference>System.Threading.AccessControl</AssemblyReference>
-      <AssemblyReference>System.Threading.Tasks.Parallel</AssemblyReference>
-      <AssemblyReference>System.Windows.Forms</AssemblyReference>
-      <AssemblyReference>System.Windows.Forms.Design</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
-      <AssemblyReference>System.Xml.XPath.XDocument</AssemblyReference>
-      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
-      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
-      <AssemblyReference>UiPath.FTP.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>System.Security.Cryptography</AssemblyReference>
+      <AssemblyReference>System.Security.Principal.Windows</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>System.IO.MemoryMappedFiles</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Registry</AssemblyReference>
+      <AssemblyReference>System.IO.Pipes</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
+      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
+      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
+      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>System.Net.WebClient</AssemblyReference>
+      <AssemblyReference>System.Net.Requests</AssemblyReference>
+      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>System.Threading.AccessControl</AssemblyReference>
+      <AssemblyReference>System.Threading</AssemblyReference>
       <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>System.Threading.Tasks.Parallel</AssemblyReference>
+      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
+      <AssemblyReference>System.Text.Encodings.Web</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Security.Claims</AssemblyReference>
+      <AssemblyReference>System.Security.Cryptography.Pkcs</AssemblyReference>
+      <AssemblyReference>System.Security.Cryptography.ProtectedData</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.CompilerServices.VisualC</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Resources.Writer</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>Microsoft.PowerShell.Commands.Diagnostics</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.FileVersionInfo</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.DiagnosticSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TraceSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.PerformanceCounter</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TextWriterTraceListener</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.StackTrace</AssemblyReference>
+      <AssemblyReference>System.Collections.Concurrent</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Net.Security</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Private.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xml.XPath.XDocument</AssemblyReference>
+      <AssemblyReference>System.Net.NetworkInformation</AssemblyReference>
+      <AssemblyReference>System.Net.Ping</AssemblyReference>
+      <AssemblyReference>System.Net.Sockets</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.FTP.Activities</AssemblyReference>
       <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.IntelligentOCR.StudioWeb.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
-      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
-      <AssemblyReference>UiPath.Platform</AssemblyReference>
-      <AssemblyReference>UiPath.SmartData.PositionBasedExtraction</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Validation</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
+      <AssemblyReference>Microsoft.CodeAnalysis.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.CodeAnalysis.Features</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Api</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
-      <AssemblyReference>UiPath.Workflow</AssemblyReference>
-      <AssemblyReference>WindowsBase</AssemblyReference>
-      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="CheckMissingField" sap:VirtualizedContainerService.HintSize="714,5767.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="CheckMissingField" sap:VirtualizedContainerService.HintSize="714,6524.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataRow" Name="customer_row" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_customers" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_application" />
       <Variable x:TypeArguments="sd:DataRow" Name="row_app" />
-      <Variable x:TypeArguments="s:String[]" Name="file_list" />
-      <Variable x:TypeArguments="x:Boolean" Name="fileExists" />
-      <Variable x:TypeArguments="x:String" Name="check_status" />
-      <Variable x:TypeArguments="x:String" Name="error_details" />
-      <Variable x:TypeArguments="s:String[]" Name="ocr_file_list" />
-      <Variable x:TypeArguments="x:String" Name="ocrText" />
-      <Variable x:TypeArguments="x:String" Name="extracted_passport_number" />
-      <Variable x:TypeArguments="x:String" Name="extracted_visa_number" />
+      <Variable x:TypeArguments="x:String" Name="id_front_file" />
+      <Variable x:TypeArguments="x:String" Name="id_back_file" />
+      <Variable x:TypeArguments="x:String" Name="passport_file" />
+      <Variable x:TypeArguments="x:String" Name="visa_file" />
+      <Variable x:TypeArguments="x:String" Name="income_proof_file" />
+      <Variable x:TypeArguments="x:String" Name="id_number" />
+      <Variable x:TypeArguments="x:String" Name="full_name" />
+      <Variable x:TypeArguments="x:String" Name="nationality" />
+      <Variable x:TypeArguments="s:DateTime" Name="dob" />
+      <Variable x:TypeArguments="x:Double" Name="declared_income" />
+      <Variable x:TypeArguments="p1:DocumentTaxonomy" Name="taxonomyVariable" />
+      <Variable x:TypeArguments="x:String" Name="out_check_status" />
+      <Variable x:TypeArguments="x:String" Name="out_error_details" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="file_list" />
+      <Variable x:TypeArguments="x:String" Name="docText" />
+      <Variable x:TypeArguments="x:String" Name="documentType" />
+      <Variable x:TypeArguments="x:String" Name="extractionResults" />
       <Variable x:TypeArguments="x:String" Name="extracted_id_number" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_documents" />
-      <Variable x:TypeArguments="uisad:DocumentData" Name="DocumentData" />
-      <Variable x:TypeArguments="uisad1:IDocumentData(uisad1:ExtendedExtractionResultsForDocumentData)" Name="DocumentExtratedData" />
-      <Variable x:TypeArguments="x:String" Name="visa_number" />
-      <Variable x:TypeArguments="x:String" Name="passport_number" />
-      <Variable x:TypeArguments="p6:DocumentTaxonomy" Name="taxonomyVariable" />
-      <Variable x:TypeArguments="p5:Document" Name="dom" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_customers" />
+      <Variable x:TypeArguments="sd:DataRow" Name="customer_row" />
+      <Variable x:TypeArguments="x:Object" Name="customer_row__check_application_status__" />
+      <Variable x:TypeArguments="x:Object" Name="customer_row__check_application_error__" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -302,393 +291,368 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_59">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[application_id]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">APP0001</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_application]" DisplayName="Read &quot;applications&quot; data" sap:VirtualizedContainerService.HintSize="550.4,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" PreserveFormat="True" SheetName="Sheet1" WorkbookPath="Data\applications.xlsx" />
-    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_customers]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="550.4,120" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Sheet1" WorkbookPath="Data\customers.xlsx" />
-    <Assign DisplayName="find the relevant row based on the application ID" sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
-      <Assign.To>
-        <OutArgument x:TypeArguments="sd:DataRow">[row_app]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="sd:DataRow">[dt_application.Select("[application_id] = '" + application_id + "'").FirstOrDefault()]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:LogMessage DisplayName="Log the successful reading of application data." sap:VirtualizedContainerService.HintSize="550.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Đọc dt_application thành công, application_id: &quot; + application_id]" />
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_23">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[id_front_file]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[row_app("id_front_file").ToString.Trim]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_27">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[id_back_file]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[row_app("id_back_file").ToString.Trim]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_28">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[passport_file]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[row_app("passport_file").ToString.Trim]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_29">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[visa_file]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[row_app("visa_file").ToString.Trim]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_30">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[income_proof_file]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[row_app("income_proof_file").ToString.Trim]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_31">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[id_number]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[row_app("id_number").ToString.Trim]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_32">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[full_name]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[row_app("full_name").ToString.Trim]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_33">
-      <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[dob]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(row_app("dob").ToString.Trim, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_34">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[nationality]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[row_app("nationality").ToString.Trim]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="550.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_35">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Double">[declared_income]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Double">[CDbl(row_app("declared_income").ToString)]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="550.4,137.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomyVariable]" />
-    <If Condition="[nationality.ToLower = &quot;vietnam&quot;]" DisplayName="phan loai hoso de xuly theo nationality " sap:VirtualizedContainerService.HintSize="550.4,581.6" sap2010:WorkflowViewState.IdRef="If_8">
-      <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
+    <TryCatch DisplayName="" sap:VirtualizedContainerService.HintSize="574.4,6470.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="572.8,4018.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="list of vn" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_12">
+          <ui:LogMessage DisplayName="Log a message indicating the start of the process with the application ID." sap:VirtualizedContainerService.HintSize="539.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Bắt đầu xác thực hồ sơ cho ID: &quot; + in_application_id]" />
+          <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_application]" DisplayName="Read the 'applications.xlsx' Excel file into a DataTable." sap:VirtualizedContainerService.HintSize="539.2,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Data\\applications.xlsx" />
+          <Assign DisplayName="Find the specific application row in the DataTable using the provided application ID." sap:VirtualizedContainerService.HintSize="539.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
-              <OutArgument x:TypeArguments="s:String[]">[file_list]</OutArgument>
+              <OutArgument x:TypeArguments="sd:DataRow">[row_app]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="s:String[]">[New String() {id_front_file, id_back_file}]</InArgument>
+              <InArgument x:TypeArguments="sd:DataRow">[dt_application.Select("application_id = '" + in_application_id + "'").FirstOrDefault()]</InArgument>
             </Assign.Value>
           </Assign>
-        </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,278.4" sap2010:WorkflowViewState.IdRef="Sequence_21">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_55">
+          <If Condition="[row_app Is Nothing]" DisplayName="If the application row is not found, throw an exception with an appropriate message." sap:VirtualizedContainerService.HintSize="539.2,1499.2" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,173.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TerminateWorkflow DisplayName="Throw activity with Message: &quot;Không tìm thấy application_id trong file applications.xlsx&quot;." sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="[&quot;Không tìm thấy application_id trong file applications.xlsx&quot;]" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,1187.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[id_front_file]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[row_app("id_front_file").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[id_back_file]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[row_app("id_back_file").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[passport_file]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[row_app("passport_file").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[visa_file]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[row_app("visa_file").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[income_proof_file]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[row_app("income_proof_file").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[id_number]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[row_app("id_number").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[full_name]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[row_app("full_name").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[nationality]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[row_app("nationality").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="s:DateTime">[dob]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="s:DateTime">[If(String.IsNullOrWhiteSpace(row_app("dob").ToString()), DateTime.MinValue, DateTime.ParseExact(row_app("dob").ToString().Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture))]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign các biến từ row_app (kéo nhiều Assign liên tiếp hoặc dùng một Invoke Code nếu muốn gọn):" sap:VirtualizedContainerService.HintSize="434.4,104.8" sap2010:WorkflowViewState.IdRef="Assign_11">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Double">[declared_income]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(row_app("declared_income"))]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Else>
+          </If>
+          <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="539.2,137.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomyVariable]" />
+          <Assign DisplayName="Assign defaults:" sap:VirtualizedContainerService.HintSize="539.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
             <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[check_status]</OutArgument>
+              <OutArgument x:TypeArguments="x:String">[out_check_status]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">REJECT</InArgument>
+              <InArgument x:TypeArguments="x:String">["PASS"]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_56">
+          <Assign DisplayName="Assign defaults:" sap:VirtualizedContainerService.HintSize="539.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_15">
             <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[error_details]</OutArgument>
+              <OutArgument x:TypeArguments="x:String">[out_error_details]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">CHƯA xử lý ĐƯỢC hồ sơ nước ngoài.</InArgument>
+              <InArgument x:TypeArguments="x:String">[""]</InArgument>
             </Assign.Value>
           </Assign>
-        </Sequence>
-      </If.Else>
-    </If>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each file in the file_list:" sap:VirtualizedContainerService.HintSize="550.4,2184.8" sap2010:WorkflowViewState.IdRef="ForEach`1_7" Values="[file_list]">
-      <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="x:String">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:String" Name="currentItem" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548.8,2054.4" sap2010:WorkflowViewState.IdRef="Sequence_39">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:PathExists Resource="{x:Null}" DisplayName="Check if the current file exists." Exists="[fileExists]" sap:VirtualizedContainerService.HintSize="515.2,173.6" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[currentItem]" PathType="File" />
-            <If Condition="[fileExists]" DisplayName="If the file exists:" sap:VirtualizedContainerService.HintSize="515.2,1820.8" sap2010:WorkflowViewState.IdRef="If_16">
-              <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="513.6,1298.4" sap2010:WorkflowViewState.IdRef="Sequence_45">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="p4:ExtractionResult" Name="extractionResults" />
-                    <Variable x:TypeArguments="x:String" Name="docText" />
-                  </Sequence.Variables>
+          <Assign DisplayName="Assign để build file_list:" sap:VirtualizedContainerService.HintSize="539.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[file_list]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)">[If(String.IsNullOrWhiteSpace(nationality), New String() {id_front_file, id_back_file}.ToList(), If(Equals(nationality.ToLower(), "vietnam"), New String() {id_front_file, id_back_file}.ToList(), New String() {passport_file, visa_file}.ToList()))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each (vòng lặp qua file_list):" sap:VirtualizedContainerService.HintSize="539.2,1407.2" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[file_list]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="file_path" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="537.6,1276.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <p:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[dom]" DocumentPath="[currentItem]" DocumentText="[docText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="480,332" sap2010:WorkflowViewState.IdRef="DigitizeDocument_4">
-                    <p:DigitizeDocument.OCREngine>
-                      <ActivityFunc x:TypeArguments="sd1:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd2:Rectangle, x:String))" Argument1="{x:Reference __ReferenceID0}" Argument2="{x:Reference __ReferenceID1}">
-                        <p1:UiPathDocumentOCR Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="[Nothing]" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,24.8" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_5" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000">
-                          <p1:UiPathDocumentOCR.Image>
-                            <InArgument x:TypeArguments="sd1:Image">
-                              <DelegateArgumentValue x:TypeArguments="sd1:Image" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_19">
-                                <DelegateInArgument x:TypeArguments="sd1:Image" x:Name="__ReferenceID0" Name="Image" />
-                              </DelegateArgumentValue>
-                            </InArgument>
-                          </p1:UiPathDocumentOCR.Image>
-                          <p1:UiPathDocumentOCR.PredictionId>
-                            <InArgument x:TypeArguments="x:String">
-                              <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_20">
-                                <DelegateInArgument x:TypeArguments="x:String" x:Name="__ReferenceID1" Name="PredictionId" />
-                              </DelegateArgumentValue>
-                            </InArgument>
-                          </p1:UiPathDocumentOCR.PredictionId>
-                        </p1:UiPathDocumentOCR>
-                      </ActivityFunc>
-                    </p:DigitizeDocument.OCREngine>
-                  </p:DigitizeDocument>
-                  <p2:DataExtractionScope AvailableAssetPaths="{x:Null}" ClassificationResult="{x:Null}" RuntimeAssetPath="{x:Null}" RuntimeTenantUrl="{x:Null}" ApplyGenerativeValidation="False" DisplayName="Extract data from the document based on its type (VN_ID, Passport, or Visa)." DocumentObjectModel="[dom]" DocumentPath="[currentItem]" DocumentText="[docText]" DocumentTypeId="[If(currentItem.Contains(&quot;id_front&quot;), &quot;NoGroup.NoCategory.VN_ID&quot;, If(currentItem.Contains(&quot;passport&quot;), &quot;NoGroup.NoCategory.Passport&quot;, &quot;NoGroup.NoCategory.Visa&quot;))]" ExtractionResult="[extractionResults]" FormatValuesIfPossible="True" GenerativeValidationConfidenceThreshold="99" sap:VirtualizedContainerService.HintSize="480,522.4" sap2010:WorkflowViewState.IdRef="DataExtractionScope_4" Taxonomy="[taxonomyVariable]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI12f3dead0a3544eabf6954629732693b&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;NoGroup.NoCategory.VN_ID&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;NoGroup.NoCategory.Passport&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.Passport.so_ho_chieu&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Passport.so_ho_chieu&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;NoGroup.NoCategory.Visa&quot;:{&quot;FieldMappings&quot;:{&quot;NoGroup.NoCategory.Visa.so_visa&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;NoGroup.NoCategory.Visa.so_visa&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UI12f3dead0a3544eabf6954629732693b&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UI12f3dead0a3544eabf6954629732693b&quot;:[]}}">
-                    <p2:DataExtractionScope.Extractors>
-                      <p2:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="23x7jRWIvQO4CCDSbldOYkREF50IpYWiyFLVjp/7XK/YE3sSs9gzf6uiGXDBydIslrDQycvasRFXq8zLZr1moA==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="382.4,164" sap2010:WorkflowViewState.IdRef="FormExtractor_3" MinOverlapPercentage="65" PersistenceId="UI12f3dead0a3544eabf6954629732693b" SendDocumentsForAlgorithmImprovements="True" SerializedSettings="{}{&quot;DocTypeSettings&quot;:[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.VN_ID&quot;,&quot;SignatureFields&quot;:[{&quot;FieldId&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;}],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[&quot;Yes&quot;,&quot;X&quot;,&quot;V&quot;,&quot;✓&quot;,&quot;✔&quot;],&quot;BooleanSynonymsForNo&quot;:[&quot;No&quot;],&quot;CaseSensitiveSynonyms&quot;:true}]}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.VN_ID&quot;,&quot;FormId&quot;:&quot;8b9560f2&quot;,&quot;FormName&quot;:&quot;MAU-CCCD&quot;,&quot;OriginalFileExtension&quot;:&quot;png&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,940.0,700.0],&quot;SkewAngle&quot;:-0.1,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;CĂN&quot;,&quot;Box&quot;:[233.0,360.0,81.0,41.0]},{&quot;Text&quot;:&quot;CUóc&quot;,&quot;Box&quot;:[234.0,446.0,111.0,39.0]},{&quot;Text&quot;:&quot;CÔNG&quot;,&quot;Box&quot;:[233.0,561.0,113.0,39.0]},{&quot;Text&quot;:&quot;DÂN&quot;,&quot;Box&quot;:[233.0,679.0,77.0,39.0]},{&quot;Text&quot;:&quot;Ső:&quot;,&quot;Box&quot;:[295.0,356.0,37.0,22.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;,&quot;Box&quot;:[279.3743,430.6145,339.2402,47.2626]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
-                        <p2:FormExtractor.DocumentBounds>
-                          <InArgument x:TypeArguments="p4:ResultsDocumentBounds">
-                            <DelegateArgumentValue x:TypeArguments="p4:ResultsDocumentBounds">
-                              <DelegateInArgument x:TypeArguments="p4:ResultsDocumentBounds" Name="DocumentBounds" />
-                            </DelegateArgumentValue>
-                          </InArgument>
-                        </p2:FormExtractor.DocumentBounds>
-                        <p2:FormExtractor.DocumentObjectModel>
-                          <InArgument x:TypeArguments="p5:Document">
-                            <DelegateArgumentValue x:TypeArguments="p5:Document">
-                              <DelegateInArgument x:TypeArguments="p5:Document" Name="DocumentObjectModel" />
-                            </DelegateArgumentValue>
-                          </InArgument>
-                        </p2:FormExtractor.DocumentObjectModel>
-                        <p2:FormExtractor.DocumentPath>
-                          <InArgument x:TypeArguments="x:String">
-                            <DelegateArgumentValue x:TypeArguments="x:String">
-                              <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
-                            </DelegateArgumentValue>
-                          </InArgument>
-                        </p2:FormExtractor.DocumentPath>
-                        <p2:FormExtractor.DocumentText>
-                          <InArgument x:TypeArguments="x:String">
-                            <DelegateArgumentValue x:TypeArguments="x:String">
-                              <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
-                            </DelegateArgumentValue>
-                          </InArgument>
-                        </p2:FormExtractor.DocumentText>
-                        <p2:FormExtractor.ExtractorDocumentType>
-                          <InArgument x:TypeArguments="p3:ExtractorDocumentType">
-                            <DelegateArgumentValue x:TypeArguments="p3:ExtractorDocumentType">
-                              <DelegateInArgument x:TypeArguments="p3:ExtractorDocumentType" Name="ExtractorDocumentType" />
-                            </DelegateArgumentValue>
-                          </InArgument>
-                        </p2:FormExtractor.ExtractorDocumentType>
-                        <p2:FormExtractor.ExtractorResult>
-                          <OutArgument x:TypeArguments="p3:ExtractorResult">
-                            <DelegateArgumentReference x:TypeArguments="p3:ExtractorResult">
-                              <DelegateOutArgument x:TypeArguments="p3:ExtractorResult" Name="ExtractorResult" />
-                            </DelegateArgumentReference>
-                          </OutArgument>
-                        </p2:FormExtractor.ExtractorResult>
-                        <p2:FormExtractor.PredictionId>
-                          <InArgument x:TypeArguments="x:String">
-                            <DelegateArgumentValue x:TypeArguments="x:String">
-                              <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
-                            </DelegateArgumentValue>
-                          </InArgument>
-                        </p2:FormExtractor.PredictionId>
-                      </p2:FormExtractor>
-                    </p2:DataExtractionScope.Extractors>
-                  </p2:DataExtractionScope>
-                  <If Condition="[currentItem.Contains(&quot;id_front&quot;)]" DisplayName="If the document is an &quot;id_front&quot; type:" sap:VirtualizedContainerService.HintSize="480,384" sap2010:WorkflowViewState.IdRef="If_15">
+                  <If Condition="[String.IsNullOrWhiteSpace(file_path)]" DisplayName="FlowDecision 1: Condition: String.IsNullOrWhiteSpace(file_path)" sap:VirtualizedContainerService.HintSize="504,1216.8" sap2010:WorkflowViewState.IdRef="If_3">
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502.4,335.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign the extracted ID number." sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_46">
+                        <Assign DisplayName="Assign out_check_status = &quot;REJECT&quot;, out_error_details = &quot;Thiếu đường dẫn file trong hồ sơ.&quot; → Break." sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[extracted_id_number]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String">[out_check_status]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[extractionResults.ResultsDocument.Fields.First(Function(f) f.FieldId = "so_cmnd").Values(0).Value]</InArgument>
+                            <InArgument x:TypeArguments="x:String">["REJECT"]</InArgument>
                           </Assign.Value>
                         </Assign>
+                        <Assign DisplayName="Assign out_check_status = &quot;REJECT&quot;, out_error_details = &quot;Thiếu đường dẫn file trong hồ sơ.&quot; → Break." sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[out_error_details]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">["Thiếu đường dẫn file trong hồ sơ."]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:Break DisplayName="Assign out_check_status = &quot;REJECT&quot;, out_error_details = &quot;Thiếu đường dẫn file trong hồ sơ.&quot; → Break." sap:VirtualizedContainerService.HintSize="468.8,48" sap2010:WorkflowViewState.IdRef="Break_1" />
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,89.6" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="502.4,752" sap2010:WorkflowViewState.IdRef="Sequence_7">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[Not File.Exists(file_path)]" DisplayName="FlowDecision 2: Condition: Not System.IO.File.Exists(file_path)" sap:VirtualizedContainerService.HintSize="468.8,692" sap2010:WorkflowViewState.IdRef="If_4">
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,335.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign out_check_status = &quot;REJECT&quot;, out_error_details = &quot;Không tìm thấy file: &quot; + file_path → Break." sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[out_check_status]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">["REJECT"]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign DisplayName="Assign out_check_status = &quot;REJECT&quot;, out_error_details = &quot;Không tìm thấy file: &quot; + file_path → Break." sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[out_error_details]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[String.Format("Không tìm thấy file: {0}", file_path)]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:Break DisplayName="Assign out_check_status = &quot;REJECT&quot;, out_error_details = &quot;Không tìm thấy file: &quot; + file_path → Break." sap:VirtualizedContainerService.HintSize="433.6,48" sap2010:WorkflowViewState.IdRef="Break_2" />
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,227.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File to call the OCR sub-workflow" sap:VirtualizedContainerService.HintSize="433.6,167.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" Level="Info" LogEntry="No" LogExit="No" Timeout="00:00:00" UnSafe="False" WorkflowFileName="Process\ExtractIDFromDocument.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_check_status">[out_check_status]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_error_details">[out_error_details]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_extracted_id_number">[extracted_id_number]</OutArgument>
+                                  <InArgument x:TypeArguments="p1:DocumentTaxonomy" x:Key="in_taxonomy">[taxonomyVariable]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_file_path">[file_path]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                          </If.Else>
+                        </If>
                       </Sequence>
                     </If.Else>
                   </If>
                 </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Else" sap:VirtualizedContainerService.HintSize="513.6,392.8" sap2010:WorkflowViewState.IdRef="Sequence_47">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="480,301.6" sap2010:WorkflowViewState.IdRef="Sequence_46">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Assign error_details" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_49">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[error_details]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[String.Format("File not found: {0}", currentItem)]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign DisplayName="Assign check_status" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_50">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[check_status]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">["REJECT"]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                  </Sequence>
-                </Sequence>
-              </If.Else>
-            </If>
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEach.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:ForEach>
-    <If Condition="[nationality.ToLower = &quot;vietnam&quot; AndAlso Not String.IsNullOrWhiteSpace(id_number) AndAlso Not String.IsNullOrWhiteSpace(extracted_id_number) AndAlso id_number.Trim = extracted_id_number.Trim]" sap:VirtualizedContainerService.HintSize="550.4,581.6" sap2010:WorkflowViewState.IdRef="If_10">
-      <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_27">
+              </ActivityAction>
+            </ui:ForEach.Body>
+          </ui:ForEach>
+          <ui:LogMessage DisplayName="Log Message (sau For Each): &quot;Hoàn tất xử lý nghiệp vụ cho ID: &quot; + in_application_id." sap:VirtualizedContainerService.HintSize="539.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Hoàn tất xử lý nghiệp vụ cho ID: &quot; + in_application_id]" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Body" sap:VirtualizedContainerService.HintSize="572.8,484" sap2010:WorkflowViewState.IdRef="Sequence_15">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Assign the string &quot;FAILED&quot; to the variable out_check_status." sap:VirtualizedContainerService.HintSize="539.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_24">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[out_check_status]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["FAILED"]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign DisplayName="Assign the exception message to the variable out_error_details." sap:VirtualizedContainerService.HintSize="539.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_25">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[out_error_details]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[exception.Message]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log a message combining a static string and the exception message." sap:VirtualizedContainerService.HintSize="539.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;Đã xảy ra lỗi hệ thống: &quot; &amp; exception.Message]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="572.8,1803.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_38">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[check_status]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">PASS</InArgument>
-            </Assign.Value>
-          </Assign>
+          <ui:LogMessage DisplayName="Log Message: &quot;Bắt đầu cập nhật kết quả vào file Excel...&quot;." sap:VirtualizedContainerService.HintSize="539.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Bắt đầu cập nhật kết quả vào file Excel...&quot;]" />
+          <If Condition="[Not String.IsNullOrWhiteSpace(in_application_id)]" DisplayName="FlowDecision: Condition: Not String.IsNullOrWhiteSpace(in_application_id)" sap:VirtualizedContainerService.HintSize="539.2,1568.8" sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Then>
+              <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Then" sap:VirtualizedContainerService.HintSize="504,1182.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_customers]" DisplayName="Read data from the specified Excel file and sheet into a DataTable." sap:VirtualizedContainerService.HintSize="470.4,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="Data\\customers.xlsx" />
+                <Assign sap:VirtualizedContainerService.HintSize="470.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_28">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="sd:DataRow">[customer_row]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="sd:DataRow">[If(String.IsNullOrWhiteSpace(in_application_id), Nothing, dt_customers.Select("application_id = '" + in_application_id + "'").FirstOrDefault())]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[customer_row IsNot Nothing]" DisplayName="FlowDecision: " sap:VirtualizedContainerService.HintSize="470.4,718.4" sap2010:WorkflowViewState.IdRef="If_7">
+                  <If.Then>
+                    <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,309.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Assign the value of out_check_status to the 'check_application_status' column of customer_row." sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_30">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[customer_row("check_application_status")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_check_status]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign DisplayName="Assign the value of out_error_details to the 'check_application_error' column of customer_row." sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_31">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[customer_row("check_application_error")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[out_error_details]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:Annotation.AnnotationText="&#xA;" DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,270.4" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="If the condition is met, log a warning message." sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn" Message="[&quot;Application ID is missing. Skipping update to Excel file.&quot;]" />
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[dt_customers]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="470.4,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="Data\\customers.xlsx" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Else" sap:VirtualizedContainerService.HintSize="504,256.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="If the condition is met, log a warning message." sap:VirtualizedContainerService.HintSize="470.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Application ID is missing. Skipping update to Excel file.&quot;]" />
+              </Sequence>
+            </If.Else>
+          </If>
         </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,278.4" sap2010:WorkflowViewState.IdRef="Sequence_28">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_39">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[check_status]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">REJECT</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_40">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[error_details]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">Thông tin định danh không khớp hoặc quốc tịch không hỗ trợ.</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-      </If.Else>
-    </If>
-    <Sequence DisplayName="Update customers" sap:VirtualizedContainerService.HintSize="550.4,449.6" sap2010:WorkflowViewState.IdRef="Sequence_48">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_57">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:Object">[dt_customers.Select("[application_id] = '" + application_id + "'")(0)("check_application_status")]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:Object">[check_status]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_58">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:Object">[dt_customers.Select("[application_id] = '" + application_id + "'")(0)("check_application_error")]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:Object">[error_details]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[dt_customers]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="Data\customers.xlsx" />
-    </Sequence>
+      </TryCatch.Finally>
+    </TryCatch>
   </Sequence>
 </Activity>

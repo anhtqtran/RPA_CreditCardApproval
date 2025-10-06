@@ -4,10 +4,14 @@
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "3.1.1",
+    "UiPath.DocumentProcessing.Contracts": "[1.30.2]",
+    "UiPath.Excel.Activities": "[3.2.1]",
+    "UiPath.GSuite.Activities": "[3.4.10]",
+    "UiPath.IntelligentOCR.Activities": "[6.26.0]",
     "UiPath.Mail.Activities": "[2.4.10]",
-    "UiPath.System.Activities": "[25.8.1]",
-    "UiPath.Word.Activities": "[2.2.0]"
+    "UiPath.MicrosoftOffice365.Activities": "[3.4.10]",
+    "UiPath.System.Activities": "[25.10.0]",
+    "UiPath.UIAutomation.Activities": "[25.10.16]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -20,7 +24,7 @@
     "isPausable": true,
     "isAttended": false,
     "requiresUserInteraction": true,
-    "supportsPersistence": false,
+    "supportsPersistence": true,
     "workflowSerialization": "NewtonsoftJson",
     "excludedLoggedData": [
       "Private:*",
@@ -36,7 +40,6 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
-      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
