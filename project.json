@@ -43,7 +43,9 @@
       "privateWorkflows": []
     },
     "processOptions": {
-      "ignoredFiles": []
+      "ignoredFiles": [
+        "Process/Verification/CheckApplicationResult (1).xaml"
+      ]
     },
     "fileInfoCollection": [],
     "saveToCloud": false
