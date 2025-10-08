@@ -115,6 +115,8 @@
       <AssemblyReference>UiPath.Word</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -122,7 +124,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="CreatContract" sap:VirtualizedContainerService.HintSize="700,4178.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CreatContract" sap:VirtualizedContainerService.HintSize="736.6666666666666,4468.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="contractPath" />
       <Variable x:TypeArguments="x:String" Name="offerStr" />
@@ -138,20 +140,20 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="542,118.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;[CreateContract] custID=&quot; &amp; in_custID &amp; &quot;; offer=&quot; &amp; in_offerLimit.ToString(&quot;N0&quot;, New System.Globalization.CultureInfo(&quot;vi-VN&quot;))]" />
-    <If Condition="[in_offerLimit &lt;= 0D OrElse String.IsNullOrWhiteSpace(in_custID)]" sap:VirtualizedContainerService.HintSize="542,4037.3333333333335" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="542,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[CreateContract] custID=&quot; &amp; in_custID &amp; &quot;; offer=&quot; &amp; in_offerLimit.ToString(&quot;N0&quot;, New System.Globalization.CultureInfo(&quot;vi-VN&quot;))]" />
+    <If Condition="[in_offerLimit &lt;= 0D OrElse String.IsNullOrWhiteSpace(in_custID)]" sap:VirtualizedContainerService.HintSize="542,4269.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="540,169.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="540,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="506,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Không đủ điền kiện tạo hợp đồng&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="506,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Không đủ điền kiện tạo hợp đồng&quot;]" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="540,3737.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="540,3911.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -203,25 +205,25 @@
               </ActivityAction>
             </ui:ForEachRow.Body>
           </ui:ForEachRow>
-          <If Condition="[String.IsNullOrEmpty(fullName)]" sap:VirtualizedContainerService.HintSize="506,2866.6666666666665" sap2010:WorkflowViewState.IdRef="If_3">
+          <If Condition="[String.IsNullOrEmpty(fullName)]" sap:VirtualizedContainerService.HintSize="506,3040.6666666666665" sap2010:WorkflowViewState.IdRef="If_3">
             <If.Then>
-              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,169.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="452,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Không tìm thấy khách hàng&quot;]" />
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Không tìm thấy khách hàng&quot;]" />
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,2566.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,2682.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="452,118.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Khách hàng là: &quot; &amp; fullName]" />
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Khách hàng là: &quot; &amp; fullName]" />
                 <Assign sap:VirtualizedContainerService.HintSize="452,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[contractPath]</OutArgument>
@@ -291,7 +293,7 @@
                     <InArgument x:TypeArguments="x:String">[contractPath]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="452,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Hợp đồng đã tạo:&quot; &amp; Environment.NewLine &amp;&#xD;&#xA;&quot;DOCX: &quot; &amp; out_contractPath &amp; Environment.NewLine &amp;&#xD;&#xA;&quot;PDF: &quot; &amp; System.IO.Path.ChangeExtension(contractPath, &quot;.pdf&quot;)]" />
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Hợp đồng đã tạo:&quot; &amp; Environment.NewLine &amp;&#xD;&#xA;&quot;DOCX: &quot; &amp; out_contractPath &amp; Environment.NewLine &amp;&#xD;&#xA;&quot;PDF: &quot; &amp; System.IO.Path.ChangeExtension(contractPath, &quot;.pdf&quot;)]" />
               </Sequence>
             </If.Else>
           </If>
