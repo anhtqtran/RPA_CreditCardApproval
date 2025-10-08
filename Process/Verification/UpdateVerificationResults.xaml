@@ -142,7 +142,7 @@
       <AssemblyReference>Google.Apis.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="1185.2,2064.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="897.2,2186.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="customer_email" />
     </Sequence.Variables>
@@ -159,19 +159,19 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadRange>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtCustomers]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="539.2,1921.6" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtCustomers]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="539.2,2043.2" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="537.6,1748.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="537.6,1870.4" sap2010:WorkflowViewState.IdRef="Sequence_17">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[CurrentRow(&quot;application_id&quot;).ToString.Equals(application_id)]" sap:VirtualizedContainerService.HintSize="504,1688.8" sap2010:WorkflowViewState.IdRef="If_8">
+            <If Condition="[CurrentRow(&quot;application_id&quot;).ToString.Equals(application_id)]" sap:VirtualizedContainerService.HintSize="504,1810.4" sap2010:WorkflowViewState.IdRef="If_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -179,7 +179,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502.4,1469.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502.4,1591.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="rows" />
                   </Sequence.Variables>
@@ -189,7 +189,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign sap:VirtualizedContainerService.HintSize="468.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[rows]</OutArgument>
                     </Assign.To>
@@ -197,7 +197,7 @@
                       <InArgument x:TypeArguments="x:String">["O" + (dtCustomers.Rows.IndexOf(CurrentRow) + 2).ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <If Condition="[check_flag=True]" sap:VirtualizedContainerService.HintSize="468.8,1296" sap2010:WorkflowViewState.IdRef="If_9">
+                  <If Condition="[check_flag=True]" sap:VirtualizedContainerService.HintSize="468.8,1356.8" sap2010:WorkflowViewState.IdRef="If_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -205,19 +205,19 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,256" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,256" sap2010:WorkflowViewState.IdRef="Sequence_20">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[rows]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="433.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_4" SheetName="Sheet1" Text="PASS" WorkbookPath="Data\customers.xlsx" />
-                        <ui:Break sap:VirtualizedContainerService.HintSize="433.6,48" sap2010:WorkflowViewState.IdRef="Break_5" />
+                        <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[rows]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="416,148" sap2010:WorkflowViewState.IdRef="WriteCell_4" SheetName="Sheet1" Text="PASS" WorkbookPath="Data\customers.xlsx" />
+                        <ui:Break sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Break_5" />
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,910.4" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,971.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:String" Name="reject_content" />
                         </Sequence.Variables>
@@ -227,9 +227,9 @@
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[rows]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="433.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_5" SheetName="Sheet1" Text="FAIL" WorkbookPath="Data\customers.xlsx" />
-                        <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;Q&quot; + (dtCustomers.Rows.IndexOf(CurrentRow) + 2).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="433.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="Sheet1" Text="REJECT" WorkbookPath="Data\customers.xlsx" />
-                        <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+                        <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[rows]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="416,148" sap2010:WorkflowViewState.IdRef="WriteCell_5" SheetName="Sheet1" Text="FAIL" WorkbookPath="Data\customers.xlsx" />
+                        <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;Q&quot; + (dtCustomers.Rows.IndexOf(CurrentRow) + 2).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="416,148" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="Sheet1" Text="REJECT" WorkbookPath="Data\customers.xlsx" />
+                        <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_7">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[customer_email]</OutArgument>
                           </Assign.To>
@@ -237,7 +237,7 @@
                             <InArgument x:TypeArguments="x:String">[CurrentRow("email").ToString]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[string.Format(&quot;&lt;P&gt;&lt;SPAN&gt;K&amp;#237;nh gửi qu&amp;#253; kh&amp;#225;ch h&amp;#224;ng &lt;/SPAN&gt;&lt;SPAN&gt;{0}&lt;/SPAN&gt;&lt;SPAN&gt;,&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Y&amp;#234;u cầu mở thẻ t&amp;#237;n dụng của bạn đ&amp;#227; bị từ chối.&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;L&amp;#237; do: Kh&amp;#244;ng thể x&amp;#225;c minh danh t&amp;#237;nh&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Vui l&amp;#242;ng kiểm tra lại c&amp;#225;c th&amp;#244;ng tin sau:&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;&lt;/LI&gt;&lt;LI&gt;&lt;/LI&gt;&lt;LI&gt;&lt;/LI&gt;&lt;LI&gt;&lt;/LI&gt;&lt;LI&gt;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN&gt;Tr&amp;#226;n trọng.&lt;/SPAN&gt;&lt;/P&gt;&quot;, full_name)]" ConnectionId="0167f1cb-5750-4367-9760-aa9a4a7e82f4" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="433.6,392.8" sap2010:WorkflowViewState.IdRef="SendEmailConnections_1" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="%[THÔNG BÁO KẾT QUẢ HỒ SƠ MỞ THẺ TÍN DỤNG]" To="[New List(Of String) From {customer_email}]" UseConnectionService="True">
+                        <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[&quot;&lt;P&gt;&lt;SPAN&gt;Kính gửi quý khách hàng &quot; &amp; full_name &amp; &quot;,&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Yêu cầu mở thẻ tín dụng của bạn đã bị từ chối.&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Lí do: Xác minh danh tính thất bại&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Vui lòng kiểm tra lại các thông tin sau:&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;Mã hồ sơ: &quot; &amp; application_id &amp; &quot;&lt;/LI&gt;&lt;LI&gt;Họ và tên: &quot; &amp; full_name &amp; &quot;&lt;/LI&gt;&lt;LI&gt;Ngày sinh: &quot; &amp; dob &amp; &quot;&lt;/LI&gt;&lt;LI&gt;Địa chỉ: &quot; &amp; address &amp; &quot;&lt;/LI&gt;&lt;LI&gt;Số CCCD: &quot; &amp; id_number &amp; &quot;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN&gt;Trân trọng.&lt;/SPAN&gt;&lt;/P&gt;&quot;]" ConnectionId="0167f1cb-5750-4367-9760-aa9a4a7e82f4" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="416,392.8" sap2010:WorkflowViewState.IdRef="SendEmailConnections_1" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="%[THÔNG BÁO KẾT QUẢ HỒ SƠ MỞ THẺ TÍN DỤNG]" To="[New List(Of String) From {customer_email}]" UseConnectionService="True">
                           <uga:SendEmailConnections.Attachments>
                             <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
                           </uga:SendEmailConnections.Attachments>
@@ -256,7 +256,7 @@
                             </usau:BackupSlot>
                           </uga:SendEmailConnections.InputTypeBackup>
                         </uga:SendEmailConnections>
-                        <ui:Break sap:VirtualizedContainerService.HintSize="433.6,48" sap2010:WorkflowViewState.IdRef="Break_6" />
+                        <ui:Break sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Break_6" />
                       </Sequence>
                     </If.Else>
                   </If>

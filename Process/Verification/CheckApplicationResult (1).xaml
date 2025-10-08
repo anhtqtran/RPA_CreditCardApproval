@@ -203,7 +203,7 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:FilterDataTable DataTable="[dtTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="521.6,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[verification_result_table]" SelectColumnsMode="Remove">
+    <ui:FilterDataTable DataTable="[dtTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="521.6,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[verification_result_table]" SelectColumnsMode="Remove">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -222,7 +222,7 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[verification_result_table]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="521.6,148" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" WorkbookPath="Data\verification_result.xlsx" />
+    <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[verification_result_table]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="521.6,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="Data\verification_result.xlsx" />
     <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="521.6,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Đã cập nhật danh sách xác minh danh tính  thành công &quot;]" />
   </Sequence>
 </Activity>
