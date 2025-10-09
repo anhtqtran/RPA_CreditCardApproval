@@ -11,7 +11,9 @@
     "UiPath.Mail.Activities": "[2.4.10]",
     "UiPath.MicrosoftOffice365.Activities": "[3.4.10]",
     "UiPath.System.Activities": "[25.10.0]",
-    "UiPath.UIAutomation.Activities": "[25.10.16]"
+    "UiPath.UIAutomation.Activities": "[25.10.16]",
+    "UiPath.WebAPI.Activities": "[2.3.0]",
+    "UiPath.Word.Activities": "[2.2.0]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -40,6 +42,7 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
+      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
