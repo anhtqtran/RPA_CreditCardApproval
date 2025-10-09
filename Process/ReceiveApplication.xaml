@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ReceiveApplication" this:ReceiveApplication.inboxRoot="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;Output&quot;)]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugadf="clr-namespace:UiPath.GSuite.Activities.Drive.Filters;assembly=UiPath.GSuite.Activities" xmlns:ugae="clr-namespace:UiPath.GSuite.Activities.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ReceiveApplication" this:ReceiveApplication.inboxRoot="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;Output&quot;)]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugadf="clr-namespace:UiPath.GSuite.Activities.Drive.Filters;assembly=UiPath.GSuite.Activities" xmlns:ugae="clr-namespace:UiPath.GSuite.Activities.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="inboxRoot" Type="InArgument(x:String)" />
     <x:Property Name="in_config" Type="InArgument(njl:JObject)" />
@@ -71,77 +71,13 @@
       <x:String>UiPath.GSuite.Activities.Drive.Filters</x:String>
       <x:String>UiPath.GSuite.Activities.Filters</x:String>
       <x:String>UiPath.GSuite.Drive.Enums</x:String>
-      <x:String>Xceed.Pdf.Layout.List</x:String>
-      <x:String>Xceed.Pdf.Layout</x:String>
       <x:String>System.Numerics</x:String>
       <x:String>Newtonsoft.Json.Linq</x:String>
       <x:String>Newtonsoft.Json</x:String>
       <x:String>System.Dynamic</x:String>
       <x:String>System.Collections.Specialized</x:String>
       <x:String>UiPath.Web.Activities.JSON.Models</x:String>
-      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
-      <x:String>Microsoft</x:String>
-      <x:String>Microsoft.Win32.SafeHandles</x:String>
       <x:String>System.Globalization</x:String>
-      <x:String>System.Configuration.Assemblies</x:String>
-      <x:String>System.CodeDom.Compiler</x:String>
-      <x:String>System.Buffers</x:String>
-      <x:String>System.Buffers.Text</x:String>
-      <x:String>System.Buffers.Binary</x:String>
-      <x:String>System.Threading</x:String>
-      <x:String>System.Threading.Tasks</x:String>
-      <x:String>System.Threading.Tasks.Sources</x:String>
-      <x:String>System.Text</x:String>
-      <x:String>System.Text.Unicode</x:String>
-      <x:String>System.Security.Principal</x:String>
-      <x:String>System.Security.Permissions</x:String>
-      <x:String>System.Security.Cryptography</x:String>
-      <x:String>System.Runtime</x:String>
-      <x:String>System.Runtime.Remoting</x:String>
-      <x:String>System.Runtime.ExceptionServices</x:String>
-      <x:String>System.Runtime.ConstrainedExecution</x:String>
-      <x:String>System.Runtime.Versioning</x:String>
-      <x:String>System.Runtime.Loader</x:String>
-      <x:String>System.Runtime.Intrinsics</x:String>
-      <x:String>System.Runtime.Intrinsics.Wasm</x:String>
-      <x:String>System.Runtime.Intrinsics.Arm</x:String>
-      <x:String>System.Runtime.Intrinsics.X86</x:String>
-      <x:String>System.Runtime.InteropServices</x:String>
-      <x:String>System.Runtime.InteropServices.ObjectiveC</x:String>
-      <x:String>System.Runtime.InteropServices.Marshalling</x:String>
-      <x:String>System.Runtime.InteropServices.ComTypes</x:String>
-      <x:String>System.Runtime.CompilerServices</x:String>
-      <x:String>System.Resources</x:String>
-      <x:String>System.Reflection.Metadata</x:String>
-      <x:String>System.Reflection.Emit</x:String>
-      <x:String>System.IO.Enumeration</x:String>
-      <x:String>System.Diagnostics.SymbolStore</x:String>
-      <x:String>System.Diagnostics.Contracts</x:String>
-      <x:String>System.Diagnostics.CodeAnalysis</x:String>
-      <x:String>System.Diagnostics.Tracing</x:String>
-      <x:String>System.Collections.Concurrent</x:String>
-      <x:String>Internal</x:String>
-      <x:String>System.CodeDom</x:String>
-      <x:String>Microsoft.CSharp</x:String>
-      <x:String>System.Linq.Expressions.Interpreter</x:String>
-      <x:String>System.ComponentModel.Design.Serialization</x:String>
-      <x:String>System.Security.Authentication.ExtendedProtection</x:String>
-      <x:String>System.Timers</x:String>
-      <x:String>System.ComponentModel.Design</x:String>
-      <x:String>System.Xml.Schema</x:String>
-      <x:String>System.Xml.Xsl</x:String>
-      <x:String>System.Xml.Xsl.Runtime</x:String>
-      <x:String>System.Xml.XPath</x:String>
-      <x:String>System.Xml.Resolvers</x:String>
-      <x:String>Microsoft.CodeAnalysis</x:String>
-      <x:String>Microsoft.CodeAnalysis.VisualBasic</x:String>
-      <x:String>Microsoft.CodeAnalysis.VisualBasic.Syntax</x:String>
-      <x:String>Microsoft.VisualBasic.FileIO</x:String>
-      <x:String>System.Security.Authentication</x:String>
-      <x:String>System.Net.Cache</x:String>
-      <x:String>System.Net.NetworkInformation</x:String>
-      <x:String>System.Net.Security</x:String>
-      <x:String>System.Net.Sockets</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -196,123 +132,60 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Private.Xml</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
-      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
-      <AssemblyReference>System.IO.Packaging</AssemblyReference>
-      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
-      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
-      <AssemblyReference>System.Net.Primitives</AssemblyReference>
-      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
-      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
-      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
-      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
-      <AssemblyReference>System.Net.WebClient</AssemblyReference>
-      <AssemblyReference>System.Net.Requests</AssemblyReference>
-      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
       <AssemblyReference>UiPath.Web</AssemblyReference>
-      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
-      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
       <AssemblyReference>UiPath.GSuite</AssemblyReference>
-      <AssemblyReference>Xceed.PDF.NET</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable3</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable1</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable2</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
-      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
-      <AssemblyReference>Studio.Generated.TypedDataTable1</AssemblyReference>
-      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
-      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
-      <AssemblyReference>Studio.Generated.TypedDataTable3</AssemblyReference>
-      <AssemblyReference>Studio.Generated.TypedDataTable2</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualStudio.Validation</AssemblyReference>
-      <AssemblyReference>System.Security.Cryptography</AssemblyReference>
-      <AssemblyReference>System.Security.Principal.Windows</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
-      <AssemblyReference>System.IO.MemoryMappedFiles</AssemblyReference>
-      <AssemblyReference>Microsoft.Win32.Registry</AssemblyReference>
-      <AssemblyReference>System.IO.Pipes</AssemblyReference>
-      <AssemblyReference>System.CodeDom</AssemblyReference>
-      <AssemblyReference>System.Threading.AccessControl</AssemblyReference>
-      <AssemblyReference>System.Threading</AssemblyReference>
-      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
-      <AssemblyReference>UiPath.Word</AssemblyReference>
-      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
-      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
-      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
-      <AssemblyReference>System.Threading.Tasks.Parallel</AssemblyReference>
-      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
-      <AssemblyReference>System.Text.Encodings.Web</AssemblyReference>
-      <AssemblyReference>System.Security.Claims</AssemblyReference>
-      <AssemblyReference>System.Security.Cryptography.Pkcs</AssemblyReference>
-      <AssemblyReference>System.Security.Cryptography.ProtectedData</AssemblyReference>
-      <AssemblyReference>System.Windows.Forms.Design</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>System.Runtime.CompilerServices.VisualC</AssemblyReference>
-      <AssemblyReference>System.Windows.Forms</AssemblyReference>
-      <AssemblyReference>System.Resources.Writer</AssemblyReference>
-      <AssemblyReference>Microsoft.PowerShell.Commands.Diagnostics</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.FileVersionInfo</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.DiagnosticSource</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.TraceSource</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.PerformanceCounter</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.TextWriterTraceListener</AssemblyReference>
-      <AssemblyReference>System.Diagnostics.StackTrace</AssemblyReference>
-      <AssemblyReference>System.Collections.Concurrent</AssemblyReference>
-      <AssemblyReference>System.Net.Security</AssemblyReference>
-      <AssemblyReference>System.Private.Xml.Linq</AssemblyReference>
-      <AssemblyReference>System.Xml.XPath.XDocument</AssemblyReference>
-      <AssemblyReference>Microsoft.CodeAnalysis.VisualBasic</AssemblyReference>
-      <AssemblyReference>Microsoft.CodeAnalysis.Features</AssemblyReference>
-      <AssemblyReference>System.Net.NetworkInformation</AssemblyReference>
-      <AssemblyReference>System.Net.Ping</AssemblyReference>
-      <AssemblyReference>System.Net.Sockets</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <sap:WorkflowViewStateService.ViewState>
-    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-      <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
-    </scg:Dictionary>
-  </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="ReceiveApplication" sap:VirtualizedContainerService.HintSize="897.2,9881.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ReceiveApplication" sap:VirtualizedContainerService.HintSize="818.8000000000001,9452" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Default="[New DataTable]" Name="logNew" />
-      <Variable x:TypeArguments="x:String" Name="gsKeyPath" />
-      <Variable x:TypeArguments="x:String" Name="queueName" />
-      <Variable x:TypeArguments="x:Boolean" Name="useOrchestrator" />
-      <Variable x:TypeArguments="x:String" Default="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;Output&quot;)]" Name="inboxRoot" />
-      <Variable x:TypeArguments="x:String" Default="Application" Name="sheetName" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtCustomers" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtApps" />
       <Variable x:TypeArguments="sd:DataTable" Name="logTable" />
-      <Variable x:TypeArguments="x:String" Name="in_SpreadsheetId" />
-      <Variable x:TypeArguments="ugdm:GDriveRemoteItem[]" Name="out_Files" />
-      <Variable x:TypeArguments="x:String" Name="in_SpreadsheetItem" />
-      <Variable x:TypeArguments="x:String" Default="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;Output&quot;, &quot;Tracking.xlsx&quot;)]" Name="logExcelPath" />
       <Variable x:TypeArguments="x:String" Name="dst" />
+      <Variable x:TypeArguments="x:String" Default="[Path.Combine(inboxRoot, &quot;Tracking.xlsx&quot;)]" Name="logExcelPath" />
+      <Variable x:TypeArguments="x:Int32" Name="index" />
+      <Variable x:TypeArguments="upr:ILocalResource" Name="folder" />
+      <Variable x:TypeArguments="x:String" Name="localConfigText" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, s:DateTime)" Default="[New Dictionary(Of String, DateTime)]" Name="dictProcessedApps" />
+      <Variable x:TypeArguments="x:String" Default="Application" Name="sheetName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="563.2,122.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[inboxRoot]" />
-    <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" BucketId="{x:Null}" BucketName="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" BucketInputMode="Browse" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Google Workspace Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="563.2,706.4" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="D:\rpa\finalproject\uipath\Assets\rpacreditcardapproval-788128881699.json" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" RuntimeItemInputMode="Browse" Services="Unselected" UseConnectionService="False" User="37A83BE9">
+    <Assign sap:VirtualizedContainerService.HintSize="521.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_16">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[localConfigText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.IO.File.ReadAllText("config.json")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="521.6,173.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[in_config]" JsonString="[localConfigText]" />
+    <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="521.6,122.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Output="[folder]" Path="[inboxRoot]" />
+    <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" BucketId="{x:Null}" BucketName="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" BucketInputMode="Browse" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Google Workspace Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="521.6,796" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="[in_config(&quot;gsKeyPath&quot;).ToString]" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" RuntimeItemInputMode="Browse" Services="Unselected" UseConnectionService="False" User="37A83BE9">
       <uga:GSuiteApplicationScope.AuthenticationScopes>
-        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="2">
-          <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.labels.readonly</InArgument>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.readonly</InArgument>
+          <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.labels.readonly</InArgument>
         </scg:List>
       </uga:GSuiteApplicationScope.AuthenticationScopes>
       <uga:GSuiteApplicationScope.Body>
@@ -355,7 +228,7 @@
                           <InArgument x:TypeArguments="x:String">My Drive</InArgument>
                         </scg:List>
                         <scg:List x:TypeArguments="x:Object" x:Key="UrlOrId" Capacity="1">
-                          <InArgument x:TypeArguments="x:String">[string.Format("""16aVXsLpjSnq-_H4ZOBWsdgq00zYhW34l""")]</InArgument>
+                          <InArgument x:TypeArguments="x:String">["16aVXsLpjSnq-_H4ZOBWsdgq00zYhW34l"]</InArgument>
                         </scg:List>
                         <scg:List x:TypeArguments="x:Object" x:Key="FullPath" Capacity="1">
                           <InArgument x:TypeArguments="x:String">[drive]</InArgument>
@@ -422,40 +295,37 @@
         </usau:BackupSlot>
       </uga:GSuiteApplicationScope.RuntimeItemFullPathBackup>
     </uga:GSuiteApplicationScope>
-    <ui:BuildDataTable DataTable="[logTable]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="563.2,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ApplicationID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SubmittedAt&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CustomerType&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName /&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[logTable]" DisplayName="Read data from the specified Excel workbook into a data table." sap:VirtualizedContainerService.HintSize="563.2,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Log" WorkbookPath="[logExcelPath]">
-      <ui:ReadRange.Password>
-        <InArgument x:TypeArguments="x:String">
-          <Literal x:TypeArguments="x:String" Value="" />
-        </InArgument>
-      </ui:ReadRange.Password>
-      <ui:ReadRange.Range>
-        <InArgument x:TypeArguments="x:String">
-          <Literal x:TypeArguments="x:String" Value="" />
-        </InArgument>
-      </ui:ReadRange.Range>
-    </ui:ReadRange>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtApps]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="563.2,8678.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="submitted_at" DataTable="[dtApps]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="521.6,112.8" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[dtApps]" SortOrder="Ascending" />
+    <ui:BuildDataTable DataTable="[logTable]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="521.6,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ApplicationID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SubmittedAt&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CustomerType&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName /&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtCustomers]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="521.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Data\customers.xlsx" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[index]" DataTable="[dtApps]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="521.6,7550.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="561.6,8496.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520,7368.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
+              <Variable x:TypeArguments="s:DateTime" Name="submittedAt" />
+              <Variable x:TypeArguments="x:String" Name="idKey" />
               <Variable x:TypeArguments="x:String" Name="appId" />
               <Variable x:TypeArguments="x:String" Name="appFolder" />
               <Variable x:TypeArguments="x:String" Name="src" />
-              <Variable x:TypeArguments="x:String" Name="downloadUrl" />
-              <Variable x:TypeArguments="x:String" Name="fileId" />
               <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
+              <Variable x:TypeArguments="x:Int32" Name="newNumber">
+                <Variable.Default>
+                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="newNumber + 1" />
+                </Variable.Default>
+              </Variable>
+              <Variable x:TypeArguments="x:String" Name="newCustomerID" />
+              <Variable x:TypeArguments="x:String" Name="lastID" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="528,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[appId]</OutArgument>
               </Assign.To>
@@ -463,7 +333,96 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("application_id").ToString().Trim()]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="528,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_13">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[idKey]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(Not String.IsNullOrWhiteSpace(CurrentRow("id_number").ToString.Trim),
+    CurrentRow("id_number").ToString.Trim,
+    CurrentRow("passport_number").ToString.Trim)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[Not DateTime.TryParseExact(&#xA;    CurrentRow(&quot;submitted_at&quot;).ToString.Trim,&#xA;    {&quot;dd/MM/yyyy HH:mm:ss&quot;, &quot;dd/MM/yyyy H:mm:ss&quot;},&#xA;    System.Globalization.CultureInfo.InvariantCulture,&#xA;    System.Globalization.DateTimeStyles.None,&#xA;    submittedAt)]" sap:VirtualizedContainerService.HintSize="486.4,453.6" sap2010:WorkflowViewState.IdRef="If_8">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="s:DateTime">[submittedAt]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="s:DateTime">[DateTime.Parse(CurrentRow("submitted_at").ToString.Trim)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <If Condition="[Not String.IsNullOrWhiteSpace(idKey)]" sap:VirtualizedContainerService.HintSize="486.4,1093.6" sap2010:WorkflowViewState.IdRef="If_6">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,865.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[dictProcessedApps.ContainsKey(idKey) AndAlso&#xA;(DateDiff(DateInterval.Hour, dictProcessedApps(idKey), submittedAt) &lt;= 24)]" sap:VirtualizedContainerService.HintSize="451.2,805.6" sap2010:WorkflowViewState.IdRef="If_7">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,450.4" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ appId,&#xA;    CurrentRow(&quot;submitted_at&quot;).ToString.Trim,&#xA;    CurrentRow(&quot;nationality&quot;).ToString.Trim,&#xA;    &quot;DUPLICATE&quot; }]" DataTable="[logTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,220" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Duplicate detected for: &quot; + idKey + &quot; at &quot; + submittedAt.ToString(&quot;dd/MM/yyyy HH:mm:ss&quot;)]" />
+                        <ui:Continue sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_15">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="s:DateTime">[dictProcessedApps(idKey)]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="s:DateTime">[submittedAt]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,89.6" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[appFolder]</OutArgument>
               </Assign.To>
@@ -471,8 +430,8 @@
                 <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(inboxRoot, appId)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="528,122.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[appFolder]" />
-            <Assign sap:VirtualizedContainerService.HintSize="528,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="486.4,122.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[appFolder]" />
+            <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[src]</OutArgument>
               </Assign.To>
@@ -480,69 +439,23 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("id_front_file").ToString.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="528,1128" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="486.4,556.8" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502.4,900" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,328.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Not File.Exists(Path.Combine(appFolder, &quot;01_ID_front.jpg&quot;))]" DisplayName="Check if the file specified by 'dst' exists." sap:VirtualizedContainerService.HintSize="468.8,632" sap2010:WorkflowViewState.IdRef="If_8">
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,268" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign the value to 'dst'." sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[Path.Combine(appFolder, "01_ID_front.jpg")]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="Download the file using HTTP Request." EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="433.6,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_13" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
-                          <ui:HttpClient.Attachments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Attachments>
-                          <ui:HttpClient.Cookies>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Cookies>
-                          <ui:HttpClient.Headers>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Headers>
-                          <ui:HttpClient.Parameters>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Parameters>
-                          <ui:HttpClient.UrlSegments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.UrlSegments>
-                        </ui:HttpClient>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,225.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log a message indicating the file already exists." sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;File already exists: &quot; &amp; dst]" />
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                  <Assign sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign DisplayName="Assign the value to 'dst'." sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(appFolder, "01_ID_front.jpg")]</InArgument>
+                      <InArgument x:TypeArguments="x:String">[Path.Combine(appFolder, "01_ID_front.jpg")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="468.8,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_12" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
+                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="416,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_12" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
                     <ui:HttpClient.Attachments>
                       <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                     </ui:HttpClient.Attachments>
@@ -562,7 +475,7 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="502.4,89.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_22">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -571,7 +484,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <Assign sap:VirtualizedContainerService.HintSize="528,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_5">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[src]</OutArgument>
               </Assign.To>
@@ -579,61 +492,15 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("id_back_file").ToString.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="528,1264" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="486.4,556.8" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502.4,900" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,328.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Not File.Exists(Path.Combine(appFolder, &quot;02_ID_back.jpg&quot;))]" DisplayName="Check if the file specified by 'dst' exists." sap:VirtualizedContainerService.HintSize="468.8,632" sap2010:WorkflowViewState.IdRef="If_10">
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,268" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign the value to 'dst'." sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_14">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[Path.Combine(appFolder, "02_ID_back.jpg")]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="Download the file using HTTP Request." EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="433.6,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_14" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
-                          <ui:HttpClient.Attachments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Attachments>
-                          <ui:HttpClient.Cookies>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Cookies>
-                          <ui:HttpClient.Headers>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Headers>
-                          <ui:HttpClient.Parameters>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Parameters>
-                          <ui:HttpClient.UrlSegments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.UrlSegments>
-                        </ui:HttpClient>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,225.6" sap2010:WorkflowViewState.IdRef="Sequence_27">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log a message indicating the file already exists." sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;File already exists: &quot; &amp; dst]" />
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                  <Assign sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
                     </Assign.To>
@@ -641,7 +508,7 @@
                       <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(appFolder, "02_ID_back.jpg")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="468.8,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_8" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
+                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="416,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_8" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
                     <ui:HttpClient.Attachments>
                       <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                     </ui:HttpClient.Attachments>
@@ -661,17 +528,16 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="502.4,225.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_23">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="468.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;File already exists: &quot; + dst]" />
                 </Sequence>
               </If.Else>
             </If>
-            <Assign sap:VirtualizedContainerService.HintSize="528,113.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_7">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[src]</OutArgument>
               </Assign.To>
@@ -679,61 +545,15 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("passport_file").ToString.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="528,1264" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="486.4,556.8" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502.4,900" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,328.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Not File.Exists(Path.Combine(appFolder, &quot;03_Passport.jpg&quot;))]" DisplayName="Check if the file specified by 'dst' exists." sap:VirtualizedContainerService.HintSize="468.8,632" sap2010:WorkflowViewState.IdRef="If_12">
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,268" sap2010:WorkflowViewState.IdRef="Sequence_28">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign the value to 'dst'." sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_15">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[Path.Combine(appFolder, "03_Passport.jpg")]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="Download the file using HTTP Request." EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="433.6,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_15" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
-                          <ui:HttpClient.Attachments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Attachments>
-                          <ui:HttpClient.Cookies>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Cookies>
-                          <ui:HttpClient.Headers>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Headers>
-                          <ui:HttpClient.Parameters>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Parameters>
-                          <ui:HttpClient.UrlSegments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.UrlSegments>
-                        </ui:HttpClient>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,225.6" sap2010:WorkflowViewState.IdRef="Sequence_29">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log a message indicating the file already exists." sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;File already exists: &quot; &amp; dst]" />
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                  <Assign sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+                  <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_8">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
                     </Assign.To>
@@ -741,7 +561,7 @@
                       <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(appFolder, "03_Passport.jpg")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="468.8,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_9" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
+                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="416,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_9" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
                     <ui:HttpClient.Attachments>
                       <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                     </ui:HttpClient.Attachments>
@@ -761,17 +581,16 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="502.4,225.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="468.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;File already exists: &quot; + dst]" />
                 </Sequence>
               </If.Else>
             </If>
-            <Assign sap:VirtualizedContainerService.HintSize="528,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_9">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[src]</OutArgument>
               </Assign.To>
@@ -779,61 +598,15 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("visa_file").ToString.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="528,1416.8" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="486.4,556.8" sap2010:WorkflowViewState.IdRef="If_4">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,1021.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,328.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Not File.Exists(Path.Combine(appFolder, &quot;04_Visa.jpg&quot;))]" DisplayName="Check if the file specified by 'dst' exists." sap:VirtualizedContainerService.HintSize="451.2,692.8" sap2010:WorkflowViewState.IdRef="If_13">
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,328.8" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign the value to 'dst'." sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_16">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[Path.Combine(appFolder, "04_Visa.jpg")]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="Download the file using HTTP Request." EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="416,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_16" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
-                          <ui:HttpClient.Attachments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Attachments>
-                          <ui:HttpClient.Cookies>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Cookies>
-                          <ui:HttpClient.Headers>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Headers>
-                          <ui:HttpClient.Parameters>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Parameters>
-                          <ui:HttpClient.UrlSegments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.UrlSegments>
-                        </ui:HttpClient>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log a message indicating the file already exists." sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;File already exists: &quot; &amp; dst]" />
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                  <Assign sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_10">
+                  <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_10">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
                     </Assign.To>
@@ -841,7 +614,7 @@
                       <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(appFolder, "04_Visa.jpg")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="451.2,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_10" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
+                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="416,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_10" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
                     <ui:HttpClient.Attachments>
                       <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                     </ui:HttpClient.Attachments>
@@ -861,18 +634,16 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,256.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_25">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="451.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;File already exists: &quot; + dst]" />
                 </Sequence>
               </If.Else>
             </If>
-            <Assign sap:VirtualizedContainerService.HintSize="528,174.4" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_11">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[src]</OutArgument>
               </Assign.To>
@@ -880,61 +651,15 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("income_proof_file").ToString.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="528,1385.6" sap2010:WorkflowViewState.IdRef="If_5">
+            <If Condition="[Not String.IsNullOrWhiteSpace(src)]" sap:VirtualizedContainerService.HintSize="486.4,556.8" sap2010:WorkflowViewState.IdRef="If_5">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,1021.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,328.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Not File.Exists(Path.Combine(appFolder, &quot;05_IncomeProof.jpg&quot;))]" DisplayName="Check if the file specified by 'dst' exists." sap:VirtualizedContainerService.HintSize="451.2,692.8" sap2010:WorkflowViewState.IdRef="If_14">
-                    <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,328.8" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign the value to 'dst'." sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_17">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[Path.Combine(appFolder, "05_IncomeProof.jpg")]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="Download the file using HTTP Request." EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="416,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_17" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
-                          <ui:HttpClient.Attachments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Attachments>
-                          <ui:HttpClient.Cookies>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Cookies>
-                          <ui:HttpClient.Headers>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Headers>
-                          <ui:HttpClient.Parameters>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.Parameters>
-                          <ui:HttpClient.UrlSegments>
-                            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                          </ui:HttpClient.UrlSegments>
-                        </ui:HttpClient>
-                      </Sequence>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log a message indicating the file already exists." sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;File already exists: &quot; &amp; dst]" />
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                  <Assign sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_12">
+                  <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_12">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[dst]</OutArgument>
                     </Assign.To>
@@ -942,7 +667,7 @@
                       <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(appFolder, "05_IncomeProof.jpg")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="451.2,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_11" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
+                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request (legacy)" EnableSSLVerification="True" EndPoint="[src]" sap:VirtualizedContainerService.HintSize="416,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_11" Method="GET" ResourcePath="[dst]" TimeoutMS="6000">
                     <ui:HttpClient.Attachments>
                       <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                     </ui:HttpClient.Attachments>
@@ -962,33 +687,84 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,225.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_26">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="451.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;File already exists: &quot; + dst]" />
                 </Sequence>
               </If.Else>
             </If>
-            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[logTable]" DisplayName="Check if an ID exists in a data table." sap:VirtualizedContainerService.HintSize="528,327.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="ApplicationID" LookupValue="[appId]" RowIndex="[rowIndex]" TargetColumnName="ApplicationID" />
-            <If Condition="[rowIndex = -1]" DisplayName="If the ID does not exist in the data table, then perform subsequent actions." sap:VirtualizedContainerService.HintSize="528,490.4" sap2010:WorkflowViewState.IdRef="If_15">
+            <If Condition="[dtCustomers.Select(&quot;application_id = '&quot; + CurrentRow(&quot;application_id&quot;).ToString.Trim() + &quot;'&quot;).Length = 0]" sap:VirtualizedContainerService.HintSize="486.4,1460" sap2010:WorkflowViewState.IdRef="If_9">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="526.4,271.2" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,1209.6" sap2010:WorkflowViewState.IdRef="Sequence_27">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ appId, CurrentRow(&quot;submitted_at&quot;).ToString.Trim, CurrentRow(&quot;nationality&quot;).ToString.Trim, &quot;RECEIVED&quot; }]" DataTable="[logTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="492.8,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                  <If Condition="[dtCustomers.Rows.Count = 0]" sap:VirtualizedContainerService.HintSize="451.2,938.4" sap2010:WorkflowViewState.IdRef="If_10">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[newCustomerID]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">["CUS001"]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,574.4" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_19">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[lastID]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[dtCustomers.AsEnumerable().Last().Field(Of String)("customer_id")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_20">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[newNumber]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[CInt(System.Text.RegularExpressions.Regex.Match(lastID, "\d+").Value) + 1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_21">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[newCustomerID]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">["CUS" + newNumber.ToString("D3")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xD;&#xA;    CurrentRow(&quot;application_id&quot;).ToString.Trim(),&#xD;&#xA;    newCustomerID, &#xD;&#xA;    CurrentRow(&quot;id_number&quot;).ToString.Trim(),&#xD;&#xA;    CurrentRow(&quot;visa_number&quot;).ToString.Trim(),&#xD;&#xA;    CurrentRow(&quot;passport_number&quot;).ToString.Trim(),&#xD;&#xA;    CurrentRow(&quot;full_name&quot;).ToString.Trim(),&#xD;&#xA;    CurrentRow(&quot;dob&quot;).ToString.Trim(),&#xD;&#xA;    CurrentRow(&quot;gender&quot;).ToString.Trim(),&#xD;&#xA;    CurrentRow(&quot;nationality&quot;).ToString.Trim(),&#xD;&#xA;    CurrentRow(&quot;phone&quot;).ToString.Trim(),&#xD;&#xA;    CurrentRow(&quot;email&quot;).ToString.Trim(),&#xD;&#xA;    CurrentRow(&quot;address&quot;).ToString.Trim(),&#xD;&#xA;    String.Empty,&#xD;&#xA;    String.Empty,&#xD;&#xA;    String.Empty,&#xD;&#xA;    String.Empty,&#xD;&#xA;    String.Empty,&#xD;&#xA;    String.Empty&#xD;&#xA;}]" DataTable="[dtCustomers]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="451.2,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="526.4,89.6" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,120.8" sap2010:WorkflowViewState.IdRef="Sequence_28">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </Sequence>
@@ -998,6 +774,7 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[logTable]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="563.2,139.2" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Log" WorkbookPath="[logExcelPath]" />
+    <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[dtCustomers]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="521.6,148" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" WorkbookPath="Data\customers.xlsx" />
+    <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[logTable]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="521.6,139.2" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Log" WorkbookPath="[logExcelPath]" />
   </Sequence>
 </Activity>

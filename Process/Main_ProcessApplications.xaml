@@ -245,9 +245,11 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable3</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable2</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Main_ProcessApplications" sap:VirtualizedContainerService.HintSize="734.8000000000001,2055.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Main_ProcessApplications" sap:VirtualizedContainerService.HintSize="897.2,2533.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="checkStatus">
         <Variable.Default>
@@ -267,7 +269,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="504,113.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[configText]</OutArgument>
       </Assign.To>
@@ -275,14 +277,14 @@
         <InArgument x:TypeArguments="x:String">[System.IO.File.ReadAllText(System.IO.Path.Combine(Environment.CurrentDirectory, ".tmh", "config.json"))]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="504,173.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[config]" JsonString="[configText]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReceiveApplication - Invoke Workflow File (Process\ReceiveApplication.xaml)" sap:VirtualizedContainerService.HintSize="504,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\ReceiveApplication.xaml">
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="486.4,173.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[config]" JsonString="[configText]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ReceiveApplication - Invoke Workflow File (Process\ReceiveApplication.xaml)" sap:VirtualizedContainerService.HintSize="486.4,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\ReceiveApplication.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="inboxRoot" />
         <InArgument x:TypeArguments="njl:JObject" x:Key="in_config">[config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtTracking]" DisplayName="Read data from the &quot;Log&quot; sheet of &quot;Tracking.xlsx&quot; into a DataTable." sap:VirtualizedContainerService.HintSize="504,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Log" WorkbookPath="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;Output&quot;, &quot;Tracking.xlsx&quot;)]">
+    <ui:ReadRange WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtTracking]" DisplayName="Read data from the &quot;Log&quot; sheet of &quot;Tracking.xlsx&quot; into a DataTable." sap:VirtualizedContainerService.HintSize="486.4,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Log" WorkbookPath="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;Output&quot;, &quot;Tracking.xlsx&quot;)]">
       <ui:ReadRange.Password>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
@@ -294,7 +296,7 @@
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <Assign DisplayName="Filter the DataTable to select rows where the &quot;Status&quot; column is 'RECEIVED' and store them in a new DataTable." sap:VirtualizedContainerService.HintSize="504,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Filter the DataTable" sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[dtReceived]</OutArgument>
       </Assign.To>
@@ -302,13 +304,13 @@
         <InArgument x:TypeArguments="sd:DataTable">[dtTracking.AsEnumerable().Where(Function(row) Equals(row.Field(Of String)("Status"), "RECEIVED")).CopyToDataTable()]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtReceived]" DisplayName="For Each row in the filtered DataTable:" sap:VirtualizedContainerService.HintSize="504,990.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtReceived]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="486.4,1347.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="502.4,808.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484.8,1165.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="errorDetails" />
             </Sequence.Variables>
@@ -317,7 +319,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Extract the &quot;ApplicationID&quot; from the current row." sap:VirtualizedContainerService.HintSize="468.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign DisplayName="Extract the &quot;ApplicationID&quot; from the current row." sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[currentAppId]</OutArgument>
               </Assign.To>
@@ -325,7 +327,7 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("ApplicationID").ToString().Trim()]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke the &quot;CheckMissingField.xaml&quot; workflow, passing the extracted &quot;ApplicationID&quot; as an input." sap:VirtualizedContainerService.HintSize="468.8,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" Timeout="00:00:00" UnSafe="False" WorkflowFileName="Process\CheckMissingField.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke the &quot;CheckMissingField.xaml&quot; workflow, passing the extracted &quot;ApplicationID&quot; as an input." sap:VirtualizedContainerService.HintSize="451.2,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" Timeout="00:00:00" UnSafe="False" WorkflowFileName="Process\CheckMissingField.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_expected_id_number">
                   <Literal x:TypeArguments="x:String" Value="" />
@@ -338,15 +340,15 @@
                 <InArgument x:TypeArguments="njl:JObject" x:Key="in_config">[config]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <If Condition="[String.IsNullOrEmpty(checkStatus) Or checkStatus = &quot;PASS&quot;]" sap:VirtualizedContainerService.HintSize="468.8,459.2" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[String.IsNullOrEmpty(checkStatus) Or checkStatus = &quot;PASS&quot;]" sap:VirtualizedContainerService.HintSize="451.2,589.6" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Object">[CurrentRow("Status")]</OutArgument>
                     </Assign.To>
@@ -357,13 +359,13 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Object">[CurrentRow("Status")]</OutArgument>
                     </Assign.To>
@@ -374,17 +376,25 @@
                 </Sequence>
               </If.Else>
             </If>
+            <Assign sap:VirtualizedContainerService.HintSize="451.2,165.6" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[dtTracking.AsEnumerable().Where(Function(row) row("ApplicationID").ToString() = CurrentRow("ApplicationID").ToString()).FirstOrDefault()("Status")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[CurrentRow("Status")]</InArgument>
+              </Assign.Value>
+            </Assign>
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:WriteRange WorkbookPathResource="{x:Null}" AddHeaders="False" DataTable="[dtTracking]" DisplayName="Write the updated filtered DataTable back to the &quot;Log&quot; sheet of &quot;Tracking.xlsx&quot;, starting from cell A1." sap:VirtualizedContainerService.HintSize="504,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Log" StartingCell="A1" WorkbookPath="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;Output&quot;, &quot;Tracking.xlsx&quot;)]">
+    <ui:WriteRange WorkbookPathResource="{x:Null}" DataTable="[dtTracking]" DisplayName="Write the updated filtered DataTable back to the &quot;Log&quot; sheet of &quot;Tracking.xlsx&quot;, starting from cell A1." sap:VirtualizedContainerService.HintSize="486.4,148" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Log" StartingCell="A1" WorkbookPath="[Path.Combine(Environment.CurrentDirectory, &quot;Data&quot;, &quot;Output&quot;, &quot;Tracking.xlsx&quot;)]">
       <ui:WriteRange.Password>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:WriteRange.Password>
     </ui:WriteRange>
-    <ui:LogMessage DisplayName="Log a message indicating the number of applications processed." sap:VirtualizedContainerService.HintSize="504,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Concat(&quot;Processed &quot;, dtReceived.Rows.Count.ToString(), &quot; apps&quot;)]" />
+    <ui:LogMessage DisplayName="Log a message indicating the number of applications processed." sap:VirtualizedContainerService.HintSize="486.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Concat(&quot;Processed &quot;, dtReceived.Rows.Count.ToString(), &quot; apps&quot;)]" />
   </Sequence>
 </Activity>

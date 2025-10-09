@@ -288,7 +288,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="CheckMissingField" sap:VirtualizedContainerService.HintSize="897.2,1412" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="CheckMissingField" sap:VirtualizedContainerService.HintSize="818.8000000000001,1412" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd1:DataRow" Name="row_app" />
       <Variable x:TypeArguments="x:String" Name="id_front_file" />
