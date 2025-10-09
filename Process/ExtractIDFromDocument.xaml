@@ -128,6 +128,10 @@
       <x:String>UiPath</x:String>
       <x:String>UiPath.Vision.Core.OCR</x:String>
       <x:String>UiPath.Core.Activities.OCR.Engines</x:String>
+      <x:String>Microsoft</x:String>
+      <x:String>Microsoft.CodeAnalysis</x:String>
+      <x:String>Microsoft.CodeAnalysis.VisualBasic</x:String>
+      <x:String>Microsoft.CodeAnalysis.VisualBasic.Syntax</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -257,30 +261,28 @@
       <AssemblyReference>UiPath.SmartData.PositionBasedExtraction</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Api</AssemblyReference>
       <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable3</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable1</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable2</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Validation</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.CodeAnalysis.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.CodeAnalysis.Features</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="ExtractIDFromDocument" sap:VirtualizedContainerService.HintSize="904.8,3950.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Extract ID from document, handle errors, and log status" DisplayName="ExtractIDFromDocument" sap:VirtualizedContainerService.HintSize="906,4990.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="docText" />
       <Variable x:TypeArguments="p5:ExtractionResult" Name="extractionResults" />
       <Variable x:TypeArguments="p6:Document" Name="dom" />
       <Variable x:TypeArguments="x:String" Name="documentType" />
-      <Variable x:TypeArguments="p:DocumentTaxonomy" Default="[in_taxonomy]" Name="taxonomyVariable" />
-      <Variable x:TypeArguments="x:String" Name="vn_id_extracted">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String" Value="" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="passport_id_extracted">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String" Value="" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="visa_id_extracted">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String" Value="" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="p:DocumentTaxonomy" Name="taxonomyVariable" />
+      <Variable x:TypeArguments="x:String" Name="vn_id_extracted" />
+      <Variable x:TypeArguments="x:String" Name="passport_id_extracted" />
+      <Variable x:TypeArguments="x:String" Name="visa_id_extracted" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -288,37 +290,110 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Handle potential errors during OCR and data extraction using a Try-Catch block." sap:VirtualizedContainerService.HintSize="904.8,3896" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Handle potential errors during OCR and data extraction using a Try-Catch block." sap:VirtualizedContainerService.HintSize="904.8,4936" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="903.2,3227.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="903.2,4267.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="869.6,137.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomyVariable]" />
-          <p1:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[dom]" DocumentPath="[in_file_path]" DocumentText="[docText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="869.6,332" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
-            <p1:DigitizeDocument.OCREngine>
-              <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))" Argument1="{x:Reference __ReferenceID0}" Argument2="{x:Reference __ReferenceID1}">
-                <p2:UiPathDocumentOCR Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="23x7jRWIvQO4CCDSbldOYkREF50IpYWiyFLVjp/7XK/YE3sSs9gzf6uiGXDBydIslrDQycvasRFXq8zLZr1moA==" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,24.8" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000">
-                  <p2:UiPathDocumentOCR.Image>
-                    <InArgument x:TypeArguments="sd:Image">
-                      <DelegateArgumentValue x:TypeArguments="sd:Image" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_1">
-                        <DelegateInArgument x:TypeArguments="sd:Image" x:Name="__ReferenceID0" Name="Image" />
-                      </DelegateArgumentValue>
-                    </InArgument>
-                  </p2:UiPathDocumentOCR.Image>
-                  <p2:UiPathDocumentOCR.PredictionId>
-                    <InArgument x:TypeArguments="x:String">
-                      <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_2">
-                        <DelegateInArgument x:TypeArguments="x:String" x:Name="__ReferenceID1" Name="PredictionId" />
-                      </DelegateArgumentValue>
-                    </InArgument>
-                  </p2:UiPathDocumentOCR.PredictionId>
-                </p2:UiPathDocumentOCR>
-              </ActivityFunc>
-            </p1:DigitizeDocument.OCREngine>
-          </p1:DigitizeDocument>
+          <If Condition="[in_file_path.ToLower().EndsWith(&quot;.jpg&quot;) Or in_file_path.ToLower().EndsWith(&quot;.pdf&quot;)]" sap:VirtualizedContainerService.HintSize="869.6,1509.6" sap2010:WorkflowViewState.IdRef="If_3">
+            <If.Then>
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="508.8,1281.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <p1:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="475.2,137.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomyVariable]" />
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="475.2,1084" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch.Try>
+                    <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="473.6,383.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <p1:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="Digitize Document" DocumentObjectModel="[dom]" DocumentPath="[in_file_path]" DocumentText="[docText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="440,323.2" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+                        <p1:DigitizeDocument.OCREngine>
+                          <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))" Argument1="{x:Reference __ReferenceID0}" Argument2="{x:Reference __ReferenceID1}">
+                            <p2:UiPathDocumentOCR Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ApiKey="e/9Po8L7dSAIUdW9btx5DHNn+ah8ZIO53Njk+BQ0rzfHz0tVM7v3uupVEXbVs9fghfYCu5CtTkMRxrHaq2dgHw==" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,24.8" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000">
+                              <p2:UiPathDocumentOCR.Image>
+                                <InArgument x:TypeArguments="sd:Image">
+                                  <DelegateArgumentValue x:TypeArguments="sd:Image" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_1">
+                                    <DelegateInArgument x:TypeArguments="sd:Image" x:Name="__ReferenceID0" Name="Image" />
+                                  </DelegateArgumentValue>
+                                </InArgument>
+                              </p2:UiPathDocumentOCR.Image>
+                              <p2:UiPathDocumentOCR.PredictionId>
+                                <InArgument x:TypeArguments="x:String">
+                                  <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_2">
+                                    <DelegateInArgument x:TypeArguments="x:String" x:Name="__ReferenceID1" Name="PredictionId" />
+                                  </DelegateArgumentValue>
+                                </InArgument>
+                              </p2:UiPathDocumentOCR.PredictionId>
+                            </p2:UiPathDocumentOCR>
+                          </ActivityFunc>
+                        </p1:DigitizeDocument.OCREngine>
+                      </p1:DigitizeDocument>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="473.6,452.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="Assign the OCR failure message to the out_error_details variable." sap:VirtualizedContainerService.HintSize="440,113.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[out_error_details]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">["OCR fail: " + exception.Message]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="Assign the &quot;REJECT&quot; status to the out_check_status variable." sap:VirtualizedContainerService.HintSize="440,113.6" sap2010:WorkflowViewState.IdRef="Assign_19">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[out_check_status]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">["REJECT"]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:LogMessage DisplayName="Log the detailed OCR error message." sap:VirtualizedContainerService.HintSize="440,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[&quot;OCR Error for &quot; &amp; in_file_path]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                  <TryCatch.Finally>
+                    <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="473.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </TryCatch.Finally>
+                </TryCatch>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="508.8,89.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
           <Assign DisplayName="Determine the document type (e.g., &quot;VN_ID&quot;, &quot;Passport&quot;, &quot;Visa&quot;) based on keywords in the input file path." sap:VirtualizedContainerService.HintSize="869.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[documentType]</OutArgument>
@@ -356,7 +431,7 @@
                     </x:Array>
                   </p3:DataExtractionScope.AvailableAssetPaths>
                   <p3:DataExtractionScope.Extractors>
-                    <p3:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="23x7jRWIvQO4CCDSbldOYkREF50IpYWiyFLVjp/7XK/YE3sSs9gzf6uiGXDBydIslrDQycvasRFXq8zLZr1moA==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="382.4,164" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIe673d105d5fe4af6be6c587e82ed645a" SendDocumentsForAlgorithmImprovements="True" SerializedSettings="{}{&quot;DocTypeSettings&quot;:[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.VN_ID&quot;,&quot;SignatureFields&quot;:[{&quot;FieldId&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;}],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[&quot;Yes&quot;,&quot;X&quot;,&quot;V&quot;,&quot;✓&quot;,&quot;✔&quot;],&quot;BooleanSynonymsForNo&quot;:[&quot;No&quot;],&quot;CaseSensitiveSynonyms&quot;:true},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Passport&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[],&quot;BooleanSynonymsForNo&quot;:[],&quot;CaseSensitiveSynonyms&quot;:false},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Visa&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[],&quot;BooleanSynonymsForNo&quot;:[],&quot;CaseSensitiveSynonyms&quot;:false}]}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.VN_ID&quot;,&quot;FormId&quot;:&quot;bc0931b7&quot;,&quot;FormName&quot;:&quot;maucccd&quot;,&quot;OriginalFileExtension&quot;:&quot;jpg&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,1310.0,850.0],&quot;SkewAngle&quot;:-0.1,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;CĂN&quot;,&quot;Box&quot;:[213.0,504.0,143.0,70.0]},{&quot;Text&quot;:&quot;CU&quot;,&quot;Box&quot;:[224.0,662.0,85.0,57.0]},{&quot;Text&quot;:&quot;CONG&quot;,&quot;Box&quot;:[66.0,373.0,97.0,37.0]},{&quot;Text&quot;:&quot;HÒA&quot;,&quot;Box&quot;:[62.0,475.0,73.0,36.0]},{&quot;Text&quot;:&quot;XÃ&quot;,&quot;Box&quot;:[62.0,549.0,51.0,36.0]},{&quot;Text&quot;:&quot;HOI&quot;,&quot;Box&quot;:[66.0,602.0,60.0,38.0]},{&quot;Text&quot;:&quot;CHŮ&quot;,&quot;Box&quot;:[62.0,666.0,70.0,36.0]},{&quot;Text&quot;:&quot;NGHÍA&quot;,&quot;Box&quot;:[61.0,741.0,106.0,37.0]},{&quot;Text&quot;:&quot;VIET&quot;,&quot;Box&quot;:[65.0,847.0,74.0,39.0]},{&quot;Text&quot;:&quot;NAM&quot;,&quot;Box&quot;:[68.0,925.0,75.0,30.0]},{&quot;Text&quot;:&quot;Đôc&quot;,&quot;Box&quot;:[104.0,513.0,53.0,30.0]},{&quot;Text&quot;:&quot;lâp&quot;,&quot;Box&quot;:[103.0,569.0,41.0,31.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[107.0,612.0,14.0,24.0]},{&quot;Text&quot;:&quot;Tu&quot;,&quot;Box&quot;:[104.0,627.0,41.0,30.0]},{&quot;Text&quot;:&quot;do&quot;,&quot;Box&quot;:[104.0,669.0,36.0,25.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[109.0,707.0,14.0,21.0]},{&quot;Text&quot;:&quot;Hanh&quot;,&quot;Box&quot;:[104.0,723.0,67.0,30.0]},{&quot;Text&quot;:&quot;phúc&quot;,&quot;Box&quot;:[104.0,794.0,66.0,31.0]},{&quot;Text&quot;:&quot;SOCIALIST&quot;,&quot;Box&quot;:[141.0,465.0,141.0,27.0]},{&quot;Text&quot;:&quot;REPUBLIC&quot;,&quot;Box&quot;:[141.0,606.0,132.0,27.0]},{&quot;Text&quot;:&quot;OF&quot;,&quot;Box&quot;:[141.0,742.0,40.0,27.0]},{&quot;Text&quot;:&quot;VIET&quot;,&quot;Box&quot;:[142.0,784.0,61.0,25.0]},{&quot;Text&quot;:&quot;NAM&quot;,&quot;Box&quot;:[142.0,844.0,63.0,26.0]},{&quot;Text&quot;:&quot;Independence&quot;,&quot;Box&quot;:[167.0,473.0,162.0,31.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[169.0,639.0,12.0,23.0]},{&quot;Text&quot;:&quot;Freedom&quot;,&quot;Box&quot;:[167.0,653.0,105.0,26.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[171.0,762.0,12.0,22.0]},{&quot;Text&quot;:&quot;Happiness&quot;,&quot;Box&quot;:[166.0,777.0,122.0,32.0]},{&quot;Text&quot;:&quot;Identity&quot;,&quot;Box&quot;:[310.0,523.0,107.0,38.0]},{&quot;Text&quot;:&quot;Card&quot;,&quot;Box&quot;:[311.0,630.0,72.0,30.0]},{&quot;Text&quot;:&quot;Só&quot;,&quot;Box&quot;:[372.0,387.0,46.0,37.0]},{&quot;Text&quot;:&quot;đjnh&quot;,&quot;Box&quot;:[378.0,439.0,71.0,36.0]},{&quot;Text&quot;:&quot;danh&quot;,&quot;Box&quot;:[378.0,515.0,81.0,30.0]},{&quot;Text&quot;:&quot;cá&quot;,&quot;Box&quot;:[378.0,602.0,39.0,31.0]},{&quot;Text&quot;:&quot;nhân&quot;,&quot;Box&quot;:[378.0,646.0,80.0,30.0]},{&quot;Text&quot;:&quot;/&quot;,&quot;Box&quot;:[378.0,726.0,21.0,31.0]},{&quot;Text&quot;:&quot;No:&quot;,&quot;Box&quot;:[378.0,745.0,47.0,30.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;,&quot;Box&quot;:[367.3855,805.0279,368.8492,49.7654]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
+                    <p3:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="e/9Po8L7dSAIUdW9btx5DHNn+ah8ZIO53Njk+BQ0rzfHz0tVM7v3uupVEXbVs9fghfYCu5CtTkMRxrHaq2dgHw==" DisplayName="Form Extractor" Endpoint="https://du.uipath.com/svc/formextractor" sap:VirtualizedContainerService.HintSize="382.4,164" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIe673d105d5fe4af6be6c587e82ed645a" SendDocumentsForAlgorithmImprovements="True" SerializedSettings="{}{&quot;DocTypeSettings&quot;:[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.VN_ID&quot;,&quot;SignatureFields&quot;:[{&quot;FieldId&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;}],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[&quot;Yes&quot;,&quot;X&quot;,&quot;V&quot;,&quot;✓&quot;,&quot;✔&quot;],&quot;BooleanSynonymsForNo&quot;:[&quot;No&quot;],&quot;CaseSensitiveSynonyms&quot;:true},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Passport&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[],&quot;BooleanSynonymsForNo&quot;:[],&quot;CaseSensitiveSynonyms&quot;:false},{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.Visa&quot;,&quot;SignatureFields&quot;:[],&quot;HandwritingFields&quot;:[],&quot;BooleanSynonymsForYes&quot;:[],&quot;BooleanSynonymsForNo&quot;:[],&quot;CaseSensitiveSynonyms&quot;:false}]}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;NoGroup.NoCategory.VN_ID&quot;,&quot;FormId&quot;:&quot;bc0931b7&quot;,&quot;FormName&quot;:&quot;maucccd&quot;,&quot;OriginalFileExtension&quot;:&quot;jpg&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,1310.0,850.0],&quot;SkewAngle&quot;:-0.1,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;CĂN&quot;,&quot;Box&quot;:[213.0,504.0,143.0,70.0]},{&quot;Text&quot;:&quot;CU&quot;,&quot;Box&quot;:[224.0,662.0,85.0,57.0]},{&quot;Text&quot;:&quot;CONG&quot;,&quot;Box&quot;:[66.0,373.0,97.0,37.0]},{&quot;Text&quot;:&quot;HÒA&quot;,&quot;Box&quot;:[62.0,475.0,73.0,36.0]},{&quot;Text&quot;:&quot;XÃ&quot;,&quot;Box&quot;:[62.0,549.0,51.0,36.0]},{&quot;Text&quot;:&quot;HOI&quot;,&quot;Box&quot;:[66.0,602.0,60.0,38.0]},{&quot;Text&quot;:&quot;CHŮ&quot;,&quot;Box&quot;:[62.0,666.0,70.0,36.0]},{&quot;Text&quot;:&quot;NGHÍA&quot;,&quot;Box&quot;:[61.0,741.0,106.0,37.0]},{&quot;Text&quot;:&quot;VIET&quot;,&quot;Box&quot;:[65.0,847.0,74.0,39.0]},{&quot;Text&quot;:&quot;NAM&quot;,&quot;Box&quot;:[68.0,925.0,75.0,30.0]},{&quot;Text&quot;:&quot;Đôc&quot;,&quot;Box&quot;:[104.0,513.0,53.0,30.0]},{&quot;Text&quot;:&quot;lâp&quot;,&quot;Box&quot;:[103.0,569.0,41.0,31.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[107.0,612.0,14.0,24.0]},{&quot;Text&quot;:&quot;Tu&quot;,&quot;Box&quot;:[104.0,627.0,41.0,30.0]},{&quot;Text&quot;:&quot;do&quot;,&quot;Box&quot;:[104.0,669.0,36.0,25.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[109.0,707.0,14.0,21.0]},{&quot;Text&quot;:&quot;Hanh&quot;,&quot;Box&quot;:[104.0,723.0,67.0,30.0]},{&quot;Text&quot;:&quot;phúc&quot;,&quot;Box&quot;:[104.0,794.0,66.0,31.0]},{&quot;Text&quot;:&quot;SOCIALIST&quot;,&quot;Box&quot;:[141.0,465.0,141.0,27.0]},{&quot;Text&quot;:&quot;REPUBLIC&quot;,&quot;Box&quot;:[141.0,606.0,132.0,27.0]},{&quot;Text&quot;:&quot;OF&quot;,&quot;Box&quot;:[141.0,742.0,40.0,27.0]},{&quot;Text&quot;:&quot;VIET&quot;,&quot;Box&quot;:[142.0,784.0,61.0,25.0]},{&quot;Text&quot;:&quot;NAM&quot;,&quot;Box&quot;:[142.0,844.0,63.0,26.0]},{&quot;Text&quot;:&quot;Independence&quot;,&quot;Box&quot;:[167.0,473.0,162.0,31.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[169.0,639.0,12.0,23.0]},{&quot;Text&quot;:&quot;Freedom&quot;,&quot;Box&quot;:[167.0,653.0,105.0,26.0]},{&quot;Text&quot;:&quot;-&quot;,&quot;Box&quot;:[171.0,762.0,12.0,22.0]},{&quot;Text&quot;:&quot;Happiness&quot;,&quot;Box&quot;:[166.0,777.0,122.0,32.0]},{&quot;Text&quot;:&quot;Identity&quot;,&quot;Box&quot;:[310.0,523.0,107.0,38.0]},{&quot;Text&quot;:&quot;Card&quot;,&quot;Box&quot;:[311.0,630.0,72.0,30.0]},{&quot;Text&quot;:&quot;Só&quot;,&quot;Box&quot;:[372.0,387.0,46.0,37.0]},{&quot;Text&quot;:&quot;đjnh&quot;,&quot;Box&quot;:[378.0,439.0,71.0,36.0]},{&quot;Text&quot;:&quot;danh&quot;,&quot;Box&quot;:[378.0,515.0,81.0,30.0]},{&quot;Text&quot;:&quot;cá&quot;,&quot;Box&quot;:[378.0,602.0,39.0,31.0]},{&quot;Text&quot;:&quot;nhân&quot;,&quot;Box&quot;:[378.0,646.0,80.0,30.0]},{&quot;Text&quot;:&quot;/&quot;,&quot;Box&quot;:[378.0,726.0,21.0,31.0]},{&quot;Text&quot;:&quot;No:&quot;,&quot;Box&quot;:[378.0,745.0,47.0,30.0]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;NoGroup.NoCategory.VN_ID.so_cmnd&quot;,&quot;Box&quot;:[367.3855,805.0279,368.8492,49.7654]}],&quot;Tables&quot;:[]}],&quot;AnchorBasedConfiguration&quot;:{&quot;AnchorBasedFieldConfiguration&quot;:[]}}]" Timeout="100000">
                       <p3:FormExtractor.DocumentBounds>
                         <InArgument x:TypeArguments="p5:ResultsDocumentBounds">
                           <DelegateArgumentValue x:TypeArguments="p5:ResultsDocumentBounds">
