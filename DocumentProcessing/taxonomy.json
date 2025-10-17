@@ -34,6 +34,28 @@
           "RuleSet": null,
           "DefaultValue": "",
           "DataSource": null
+        },
+        {
+          "FieldId": "NoGroup.NoCategory.VN_ID.ngay_het_han",
+          "FieldName": "ngay_het_han",
+          "IsMultiValue": false,
+          "Type": "Date",
+          "DeriveFieldsFormat": "dd/MM/yyyy",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#ff6347"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "e"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
         }
       ],
       "Metadata": [
@@ -84,6 +106,28 @@
           "RuleSet": null,
           "DefaultValue": "",
           "DataSource": null
+        },
+        {
+          "FieldId": "NoGroup.NoCategory.Passport.passport_expiry_date",
+          "FieldName": "passport_expiry_date",
+          "IsMultiValue": false,
+          "Type": "Date",
+          "DeriveFieldsFormat": "dd/MM/yyyy",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#4682b4"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "p"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
         }
       ],
       "Metadata": []
@@ -116,6 +160,28 @@
             {
               "Key": "Hotkey",
               "Value": "v"
+            }
+          ],
+          "RuleSet": null,
+          "DefaultValue": "",
+          "DataSource": null
+        },
+        {
+          "FieldId": "NoGroup.NoCategory.Visa.visa_expiry_date",
+          "FieldName": "visa_expiry_date",
+          "IsMultiValue": false,
+          "Type": "Date",
+          "DeriveFieldsFormat": "dd/MM/yyyy",
+          "Components": [],
+          "SetValues": [],
+          "Metadata": [
+            {
+              "Key": "Color",
+              "Value": "#9acd32"
+            },
+            {
+              "Key": "Hotkey",
+              "Value": "x"
             }
           ],
           "RuleSet": null,
