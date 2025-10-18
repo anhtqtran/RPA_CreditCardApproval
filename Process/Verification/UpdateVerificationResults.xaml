@@ -59,6 +59,7 @@
       <x:String>Google.Apis.Requests</x:String>
       <x:String>Google.Apis.PeopleService.v1</x:String>
       <x:String>Google.Apis</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -140,9 +141,13 @@
       <AssemblyReference>Google.Apis.PeopleService.v1</AssemblyReference>
       <AssemblyReference>Google.Apis</AssemblyReference>
       <AssemblyReference>Google.Apis.Core</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable3</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable1</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable2</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="897.2,2186.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="911.6,2186.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="customer_email" />
     </Sequence.Variables>
@@ -151,7 +156,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtCustomers]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="539.2,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="Data\customers.xlsx">
+    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dtCustomers]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="521.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="Data\customers.xlsx">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -159,19 +164,19 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadRange>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtCustomers]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="539.2,2043.2" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtCustomers]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="521.6,2043.2" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="537.6,1870.4" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520,1870.4" sap2010:WorkflowViewState.IdRef="Sequence_17">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[CurrentRow(&quot;application_id&quot;).ToString.Equals(application_id)]" sap:VirtualizedContainerService.HintSize="504,1810.4" sap2010:WorkflowViewState.IdRef="If_8">
+            <If Condition="[CurrentRow(&quot;application_id&quot;).ToString.Equals(application_id)]" sap:VirtualizedContainerService.HintSize="486.4,1810.4" sap2010:WorkflowViewState.IdRef="If_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -179,7 +184,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="502.4,1591.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,1591.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="rows" />
                   </Sequence.Variables>
@@ -189,15 +194,15 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="468.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[rows]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">["O" + (dtCustomers.Rows.IndexOf(CurrentRow) + 2).ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["X" + (dtCustomers.Rows.IndexOf(CurrentRow) + 2).ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <If Condition="[check_flag=True]" sap:VirtualizedContainerService.HintSize="468.8,1356.8" sap2010:WorkflowViewState.IdRef="If_9">
+                  <If Condition="[check_flag=True]" sap:VirtualizedContainerService.HintSize="451.2,1356.8" sap2010:WorkflowViewState.IdRef="If_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -228,7 +233,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[rows]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="416,148" sap2010:WorkflowViewState.IdRef="WriteCell_5" SheetName="Sheet1" Text="FAIL" WorkbookPath="Data\customers.xlsx" />
-                        <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;Q&quot; + (dtCustomers.Rows.IndexOf(CurrentRow) + 2).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="416,148" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="Sheet1" Text="REJECT" WorkbookPath="Data\customers.xlsx" />
+                        <ui:WriteCell WorkbookPathResource="{x:Null}" Cell="[&quot;Z&quot; + (dtCustomers.Rows.IndexOf(CurrentRow) + 2).ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="416,148" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="Sheet1" Text="REJECT" WorkbookPath="Data\customers.xlsx" />
                         <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_7">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[customer_email]</OutArgument>
@@ -237,7 +242,7 @@
                             <InArgument x:TypeArguments="x:String">[CurrentRow("email").ToString]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[&quot;&lt;P&gt;&lt;SPAN&gt;Kính gửi quý khách hàng &quot; &amp; full_name &amp; &quot;,&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Yêu cầu mở thẻ tín dụng của bạn đã bị từ chối.&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Lí do: Xác minh danh tính thất bại&lt;/SPAN&gt;&lt;/P&gt;&lt;P&gt;&lt;SPAN&gt;Vui lòng kiểm tra lại các thông tin sau:&lt;/SPAN&gt;&lt;/P&gt;&lt;UL&gt;&lt;LI&gt;Mã hồ sơ: &quot; &amp; application_id &amp; &quot;&lt;/LI&gt;&lt;LI&gt;Họ và tên: &quot; &amp; full_name &amp; &quot;&lt;/LI&gt;&lt;LI&gt;Ngày sinh: &quot; &amp; dob &amp; &quot;&lt;/LI&gt;&lt;LI&gt;Địa chỉ: &quot; &amp; address &amp; &quot;&lt;/LI&gt;&lt;LI&gt;Số CCCD: &quot; &amp; id_number &amp; &quot;&lt;/LI&gt;&lt;/UL&gt;&lt;P&gt;&lt;SPAN&gt;Trân trọng.&lt;/SPAN&gt;&lt;/P&gt;&quot;]" ConnectionId="0167f1cb-5750-4367-9760-aa9a4a7e82f4" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="416,392.8" sap2010:WorkflowViewState.IdRef="SendEmailConnections_1" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="%[THÔNG BÁO KẾT QUẢ HỒ SƠ MỞ THẺ TÍN DỤNG]" To="[New List(Of String) From {customer_email}]" UseConnectionService="True">
+                        <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[&quot;&lt;p&gt;Kinh gửi quý khách hàng&lt;/p&gt;&#xD;&#xA;&lt;p&gt;Yêu cầu mở thẻ tín dụng của bạn bị từ chối&lt;/p&gt;&#xD;&#xA;&lt;p&gt;Lí do: KHÔNG XÁC MINH ĐƯỢC DANH TÍNH&lt;/p&gt;&#xD;&#xA; &lt;p&gt;Vui lòng kiểm tra lại các thông tin sau:&lt;/p&gt;&#xD;&#xA; &lt;ul&gt;&#xD;&#xA;   &lt;li&gt;Họ tên: &quot; + full_name + &quot;&lt;/li&gt;&#xD;&#xA;   &lt;li&gt;Mã hồ sơ: &quot; + application_id + &quot;&lt;/li&gt;&#xD;&#xA;   &lt;li&gt;CMND/CCCD: &quot; + id_number + &quot;&lt;/li&gt;&#xD;&#xA;   &lt;li&gt;Ngày sinh: &quot; + dob + &quot;&lt;/li&gt;&#xD;&#xA;   &lt;li&gt;Địa chỉ: &quot; + address + &quot;&lt;/li&gt;&#xD;&#xA; &lt;/ul&gt;&#xD;&#xA; &lt;p&gt;Trân trọng.&lt;/p&gt;&quot;]" ConnectionId="0167f1cb-5750-4367-9760-aa9a4a7e82f4" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="416,392.8" sap2010:WorkflowViewState.IdRef="SendEmailConnections_1" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="%[THÔNG BÁO KẾT QUẢ HỒ SƠ MỞ THẺ TÍN DỤNG]" To="[New List(Of String) From {customer_email}]" UseConnectionService="True">
                           <uga:SendEmailConnections.Attachments>
                             <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
                           </uga:SendEmailConnections.Attachments>
@@ -263,7 +268,7 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="502.4,89.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,89.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
