@@ -288,7 +288,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="CheckMissingField" sap:VirtualizedContainerService.HintSize="818.8000000000001,6236.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="CheckMissingField" sap:VirtualizedContainerService.HintSize="897.2,6459.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataRow" Name="row_app" />
       <Variable x:TypeArguments="x:String" Name="id_front_file" />
@@ -326,7 +326,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="" sap:VirtualizedContainerService.HintSize="698.4,6182.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="" sap:VirtualizedContainerService.HintSize="698.4,6404.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
@@ -334,7 +334,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="696.8,4964" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="696.8,5186.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -362,7 +362,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" BucketId="{x:Null}" BucketName="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" BucketInputMode="Browse" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Google Workspace Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="663.2,379.2" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="D:\rpa\finalproject\uipath\Assets\rpacreditcardapproval-788128881699.json" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" RuntimeItemInputMode="Browse" Services="Unselected" UseConnectionService="False" User="483888EB">
+          <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" BucketId="{x:Null}" BucketName="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" BucketInputMode="Browse" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Google Workspace Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="663.2,601.6" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="D:\UEL\RPA\RPA_CreditCardApproval\Assets\rpacreditcardapproval-c5d3bfacacae.json" KeyType="JSON" OAuthClient="UIPATH" Password="notasecret" RuntimeItemInputMode="Browse" Services="Unselected" UseConnectionService="False" User="483888EB">
             <uga:GSuiteApplicationScope.AuthenticationScopes>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="3">
                 <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.readonly</InArgument>
@@ -375,7 +375,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="GSuiteScope" />
                 </ActivityAction.Argument>
-                <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,196" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,418.4" sap2010:WorkflowViewState.IdRef="Sequence_24">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -383,33 +383,7 @@
                       <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uga:ReadRangeConnections x:TypeArguments="sd1:DataTable2" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" ManualEntrySpreadsheetId="{x:Null}" RangeInformation="{x:Null}" Spreadsheet="{x:Null}" AuthScopesInvalid="False" BrowserItemFriendlyName="applications" BrowserItemId="https://docs.google.com/spreadsheets/d/1DBdqUxg-BugMZ962MQWNY-w94_wKX0xTsgu0f06RZWY/edit?usp=drivesdk" DisplayName="Read data from the specified Google Sheet (using either the provided ID or the ID from the dynamically found file) from the &quot;Applications&quot; sheet, including headers, and store it in a DataTable." HasHeaders="True" sap:VirtualizedContainerService.HintSize="416,56.8" sap2010:WorkflowViewState.IdRef="ReadRangeConnections`1_1" ItemSelectionMode="Browse" Range="Application" ReadAs="Values" Result="[dt_application]" TemplateBrowserItemFriendlyName="applications" TemplateBrowserItemId="https://docs.google.com/spreadsheets/d/1DBdqUxg-BugMZ962MQWNY-w94_wKX0xTsgu0f06RZWY/edit?usp=drivesdk" UseConnectionService="False" WorkingWithTemplateSpreadsheet="True">
-                    <uga:ReadRangeConnections.ColumnNames>
-                      <x:Array Type="x:String">
-                        <x:String>application_id</x:String>
-                        <x:String>submitted_at</x:String>
-                        <x:String>full_name</x:String>
-                        <x:String>dob</x:String>
-                        <x:String>gender</x:String>
-                        <x:String>nationality</x:String>
-                        <x:String>phone</x:String>
-                        <x:String>email</x:String>
-                        <x:String>address</x:String>
-                        <x:String>id_number</x:String>
-                        <x:String>id_front_file</x:String>
-                        <x:String>id_back_file</x:String>
-                        <x:String>passport_number</x:String>
-                        <x:String>passport_file</x:String>
-                        <x:String>visa_file</x:String>
-                        <x:String>employment_type</x:String>
-                        <x:String>declared_income</x:String>
-                        <x:String>income_proof_file</x:String>
-                        <x:String>requested_limit</x:String>
-                        <x:String>card_type</x:String>
-                        <x:String>application_channel</x:String>
-                        <x:String>visa_number</x:String>
-                      </x:Array>
-                    </uga:ReadRangeConnections.ColumnNames>
+                  <uga:ReadRangeConnections x:TypeArguments="sd1:DataTable2" ColumnNames="{x:Array Type=x:String}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" ManualEntrySpreadsheetId="{x:Null}" RangeInformation="{x:Null}" Spreadsheet="{x:Null}" AuthScopesInvalid="False" BrowserItemFriendlyName="applications" BrowserItemId="https://docs.google.com/spreadsheets/d/1DBdqUxg-BugMZ962MQWNY-w94_wKX0xTsgu0f06RZWY/edit?usp=drivesdk" DisplayName="Read data from the specified Google Sheet (using either the provided ID or the ID from the dynamically found file) from the &quot;Applications&quot; sheet, including headers, and store it in a DataTable." HasHeaders="True" sap:VirtualizedContainerService.HintSize="416,279.2" sap2010:WorkflowViewState.IdRef="ReadRangeConnections`1_1" ItemSelectionMode="Browse" Range="Application" ReadAs="Values" Result="[dt_application]" TemplateBrowserItemFriendlyName="applications" TemplateBrowserItemId="https://docs.google.com/spreadsheets/d/1DBdqUxg-BugMZ962MQWNY-w94_wKX0xTsgu0f06RZWY/edit?usp=drivesdk" UseConnectionService="False" WorkingWithTemplateSpreadsheet="True">
                     <uga:ReadRangeConnections.FileIdBackup>
                       <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="Browse">
                         <usau:BackupSlot.BackupValues>
@@ -431,6 +405,11 @@
                     <uga:ReadRangeConnections.RangeMetadata>
                       <ugsm:RangeMetadataSlim ColumnStart="1" RangeType="Range" />
                     </uga:ReadRangeConnections.RangeMetadata>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
                   </uga:ReadRangeConnections>
                   <ui:LogMessage DisplayName="Log the number of rows read from the DataTable for debugging." sap:VirtualizedContainerService.HintSize="416,48" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[String.Format(&quot;Rows read from Sheets: {0}&quot;, dt_application.Rows.Count.ToString())]" />
                 </Sequence>
