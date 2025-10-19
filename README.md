@@ -11,7 +11,8 @@ The bot is programmed to perform a series of tasks automatically:
 - Credit Assessment: Automatically checks CIC scores, validates income and applies business rules to calculate a proposed credit limit.
 - Human-in-the-Loop Exception Handling: Pauses the process and requests a manual review from an employee for complex cases (e.g., a customer with no CIC credit history).
 - Document Generation and Notification: Automatically generates a PDF contract for approved applications or a rejection letter, then sends a final notification email to the customer with the relevant documents attached.
-### Demo Video: https://drive.google.com/file/d/1pJvHkW-NAQ3bhmLN52HXNUVXKHoFG6CS/view?usp=sharing
+### Demo Functional Video: https://drive.google.com/file/d/1pJvHkW-NAQ3bhmLN52HXNUVXKHoFG6CS/view?usp=sharing
+### Demo End-to-End Process Video: https://drive.google.com/file/d/1glfwLiwRYg5CbXWUF6AP8djMo9fD4Svg/view?usp=sharing
 ## Technology Stack
 - Platform: UiPath Studio, UiPath Orchestrator
 - Technologies: Robotic Process Automation (RPA), Optical Character Recognition (OCR)
