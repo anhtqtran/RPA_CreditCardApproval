@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="UpdateAndSendEmail" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:umame="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Enums;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="UpdateAndSendEmail" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/word" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umae="clr-namespace:UiPath.Mail.Activities.Enums;assembly=UiPath.Mail.Activities" xmlns:umame="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Enums;assembly=UiPath.Mail.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_toEmail" Type="InArgument(x:String)" />
     <x:Property Name="in_CreditCardNumber" Type="InArgument(x:String)" />
@@ -154,23 +154,34 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
       <AssemblyReference>Studio.Generated.TypedDataTable3</AssemblyReference>
       <AssemblyReference>Studio.Generated.TypedDataTable2</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Process credit card applications, approve or reject, and send emails" DisplayName="UpdateAndSendEmail" sap:VirtualizedContainerService.HintSize="897.2,8156.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Process credit card applications, approve or reject, and send emails" DisplayName="UpdateAndSendEmail" sap:VirtualizedContainerService.HintSize="897.2,8856.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Boolean" Name="fileExists" />
+      <Variable x:TypeArguments="s:String[]" Name="arr_ContractFiles" />
+      <Variable x:TypeArguments="x:Boolean" Default="False" Name="fileExists" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_CICReports" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Customers" />
       <Variable x:TypeArguments="x:String" Name="str_EmailTemplate" />
       <Variable x:TypeArguments="x:String" Name="str_RejectTemplate" />
       <Variable x:TypeArguments="x:String" Name="str_FinalRejectBody" />
       <Variable x:TypeArguments="x:String" Name="str_FullName" />
-      <Variable x:TypeArguments="x:String" Name="str_ContractFilePath" />
+      <Variable x:TypeArguments="x:String" Name="str_ContractFilePath">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String" Value="" />
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="x:String" Name="str_CustomerEmail" />
       <Variable x:TypeArguments="x:Decimal" Name="dbl_Income" />
       <Variable x:TypeArguments="x:String" Name="str_CreditCard" />
       <Variable x:TypeArguments="x:Decimal" Name="dbl_OfferLimit" />
       <Variable x:TypeArguments="x:String" Name="str_FinalEmailBody" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="int_CustomerIndex" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_FilteredCustomer" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -204,6 +215,7 @@
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <p:WordReadText DisplayName="Read Text" sap:VirtualizedContainerService.HintSize="416,113.6" sap2010:WorkflowViewState.IdRef="WordReadText_2" Text="[str_EmailTemplate]" />
@@ -234,24 +246,23 @@
         </ActivityAction>
       </p:WordApplicationScope.Body>
     </p:WordApplicationScope>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_CICReports]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="627.2,7146.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_CICReports]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="627.2,7846.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="625.6,6964.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="625.6,7664.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="str_IDNumber" />
               <Variable x:TypeArguments="x:Int32" Name="dbl_CICScore" />
-              <Variable x:TypeArguments="sd:DataTable" Name="dt_FilteredCustomer" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Not String.IsNullOrWhiteSpace(CurrentRow(&quot;score&quot;).ToString()) AndAlso IsNumeric(CurrentRow(&quot;id_number&quot;).ToString())]" sap:VirtualizedContainerService.HintSize="592,6904.8" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[Not String.IsNullOrWhiteSpace(CurrentRow(&quot;score&quot;).ToString()) AndAlso IsNumeric(CurrentRow(&quot;id_number&quot;).ToString())]" sap:VirtualizedContainerService.HintSize="592,7604.8" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -259,7 +270,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="590.4,6685.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="590.4,7385.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -300,9 +311,9 @@
                       </scg:List>
                     </ui:FilterDataTable.SelectColumns>
                   </ui:FilterDataTable>
-                  <If Condition="[dt_FilteredCustomer.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="556.8,6082.4" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If Condition="[dt_FilteredCustomer.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="556.8,6782.4" sap2010:WorkflowViewState.IdRef="If_1">
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="555.2,5727.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="555.2,6427.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -313,7 +324,7 @@
                             <OutArgument x:TypeArguments="x:Decimal">[dbl_Income]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
-                            <InArgument x:TypeArguments="x:Decimal">[Convert.ToInt32(dt_FilteredCustomer.Rows(0)("incomes"))]</InArgument>
+                            <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32(dt_FilteredCustomer.Rows(0)("incomes"))]</InArgument>
                           </Assign.Value>
                         </Assign>
                         <Assign sap:VirtualizedContainerService.HintSize="521.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -324,9 +335,25 @@
                             <InArgument x:TypeArguments="x:String">[dt_FilteredCustomer.Rows(0)("email").ToString()]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <If Condition="[Not String.IsNullOrWhiteSpace(str_CustomerEmail)]" sap:VirtualizedContainerService.HintSize="521.6,5318.4" sap2010:WorkflowViewState.IdRef="If_6">
+                        <Assign sap:VirtualizedContainerService.HintSize="521.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_33">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[dt_FilteredCustomer.Rows(0)("status")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[""]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="521.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_34">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[dt_FilteredCustomer.Rows(0)("offer_limit")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <If Condition="[Not String.IsNullOrWhiteSpace(str_CustomerEmail)]" sap:VirtualizedContainerService.HintSize="521.6,5669.6" sap2010:WorkflowViewState.IdRef="If_6">
                           <If.Then>
-                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="520,4788.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="520,5140" sap2010:WorkflowViewState.IdRef="Sequence_23">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -389,6 +416,7 @@
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </Sequence>
@@ -428,7 +456,7 @@
                                   </Sequence>
                                 </If.Else>
                               </If>
-                              <If Condition="[dbl_OfferLimit &gt; 0]" sap:VirtualizedContainerService.HintSize="486.4,3471.2" sap2010:WorkflowViewState.IdRef="If_5">
+                              <If Condition="[dbl_OfferLimit &gt; 0]" sap:VirtualizedContainerService.HintSize="486.4,3656.8" sap2010:WorkflowViewState.IdRef="If_5">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -436,7 +464,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,2600.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484.8,2603.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -466,35 +494,60 @@
                                         <InArgument x:TypeArguments="x:String">[CurrentRow("cif").ToString()]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <Assign sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                    <Assign sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_30">
                                       <Assign.To>
-                                        <OutArgument x:TypeArguments="x:String">[str_ContractFilePath]</OutArgument>
+                                        <OutArgument x:TypeArguments="s:String[]">[arr_ContractFiles]</OutArgument>
                                       </Assign.To>
                                       <Assign.Value>
-                                        <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(Environment.CurrentDirectory, "Contract", "HopDong_" + str_IDNumber + ".docx")]</InArgument>
+                                        <InArgument x:TypeArguments="s:String[]">[System.IO.Directory.GetFiles(System.IO.Path.Combine(Environment.CurrentDirectory, "Output"), "*.docx", System.IO.SearchOption.TopDirectoryOnly).Where(Function(f) System.IO.Path.GetFileName(f).StartsWith("Contract_") AndAlso System.IO.Path.GetFileName(f).Contains(str_IDNumber)).ToArray()]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <p:WordApplicationScope SensitivityLabel="{x:Null}" DisplayName="Word Application Scope" FilePath="D:\UEL\RPA\RPA_CreditCardApproval\Templates\ContractTemplate.docx" sap:VirtualizedContainerService.HintSize="451.2,1284.8" sap2010:WorkflowViewState.IdRef="WordApplicationScope_5" SensitivityOperation="None">
-                                      <p:WordApplicationScope.Body>
-                                        <ActivityAction x:TypeArguments="ui:WordDocument">
-                                          <ActivityAction.Argument>
-                                            <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
-                                          </ActivityAction.Argument>
-                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,1154.4" sap2010:WorkflowViewState.IdRef="Sequence_28">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text" sap:VirtualizedContainerService.HintSize="416,220.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_5" Replace="[str_FullName]" ReplaceAll="True" Search="{}{{FULL_NAME}}" />
-                                            <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text" sap:VirtualizedContainerService.HintSize="416,220.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_6" Replace="[str_IDNumber]" ReplaceAll="True" Search="{}{{CCCD}}" />
-                                            <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text" sap:VirtualizedContainerService.HintSize="416,220.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_7" Replace="[dbl_OfferLimit.ToString(&quot;N0&quot;) + &quot; VND&quot;]" ReplaceAll="True" Search="{}{{OFFER_LIMIT}}" />
-                                            <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text" sap:VirtualizedContainerService.HintSize="416,220.8" sap2010:WorkflowViewState.IdRef="WordReplaceText_8" Replace="[Now.ToString(&quot;dd/MM/yyyy&quot;)]" ReplaceAll="True" Search="{}{{DATE}}" />
-                                            <p:WordSaveAs DisplayName="Save Document As" FilePath="[str_ContractFilePath]" sap:VirtualizedContainerService.HintSize="416,211.2" sap2010:WorkflowViewState.IdRef="WordSaveAs_3" />
-                                          </Sequence>
-                                        </ActivityAction>
-                                      </p:WordApplicationScope.Body>
-                                    </p:WordApplicationScope>
+                                    <If Condition="[arr_ContractFiles.Length &gt; 0]" sap:VirtualizedContainerService.HintSize="451.2,938.4" sap2010:WorkflowViewState.IdRef="If_7">
+                                      <If.Then>
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,400" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[str_ContractFilePath]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[arr_ContractFiles(0)]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Found contract file: &quot; + str_ContractFilePath]" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,400" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[str_ContractFilePath]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[""]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;No contract file found containing ID: &quot; + str_IDNumber]" />
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                    <Assign sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_29">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[fileExists]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">[Not String.IsNullOrEmpty(str_ContractFilePath)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
                                     <Assign sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_8">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:String">[str_FinalEmailBody]</OutArgument>
@@ -503,17 +556,21 @@
                                         <InArgument x:TypeArguments="x:String">[str_EmailTemplate.Replace("{{CCCD}}", str_IDNumber).Replace("{{DATE}}", Now.ToString("dd/MM/yyyy")).Replace("{{CREDIT_CARD}}", str_CreditCard).Replace("{{OFFER_LIMIT}}", dbl_OfferLimit.ToString("N0") + " VND").Replace("{{SCORE}}", dbl_CICScore.ToString())]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" Body="[str_FinalEmailBody]" ConnectionId="8affc23e-c6dc-4e58-8981-aad57e972048" ConnectionMode="IntegrationService" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="451.2,384" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="THÔNG BÁO MỞ THẺ TÍN DỤNG THÀNH CÔNG" To="[str_CustomerEmail]" UseISConnection="True" UseRichTextEditor="True">
+                                    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" Files="{x:Reference __ReferenceID0}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="FilePaths" AttachmentsCollection="[If(fileExists AndAlso System.IO.File.Exists(str_ContractFilePath), New String() {str_ContractFilePath}, New String() {})]" Body="[str_FinalEmailBody]" ConnectionId="8affc23e-c6dc-4e58-8981-aad57e972048" ConnectionMode="IntegrationService" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="451.2,392.8" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="THÔNG BÁO MỞ THẺ TÍN DỤNG THÀNH CÔNG" To="[str_CustomerEmail]" UseISConnection="True" UseRichTextEditor="True">
                                       <ui:SendMail.AttachmentsBackup>
                                         <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="FilePaths">
                                           <usau:BackupSlot.BackupValues>
                                             <scg:List x:TypeArguments="x:Object" x:Key="Existing" Capacity="1">
-                                              <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)">[{str_ContractFilePath}]</InArgument>
+                                              <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)">[If(fileExists AndAlso System.IO.File.Exists(str_ContractFilePath), New UiPath.Platform.ResourceHandling.IResource() {New UiPath.Platform.ResourceHandling.LocalResource(str_ContractFilePath)}, New UiPath.Platform.ResourceHandling.IResource() {})]</InArgument>
                                             </scg:List>
                                             <scg:List x:TypeArguments="x:Object" x:Key="Builder" Capacity="1">
                                               <scg:List x:TypeArguments="InArgument(upr:IResource)" Capacity="4">
                                                 <InArgument x:TypeArguments="upr:IResource">[{str_ContractFilePath}]</InArgument>
                                               </scg:List>
+                                            </scg:List>
+                                            <scg:List x:TypeArguments="x:Object" x:Key="FilePaths" Capacity="2">
+                                              <InArgument x:TypeArguments="scg:IEnumerable(x:String)">[If(fileExists AndAlso System.IO.File.Exists(str_ContractFilePath), New String() {str_ContractFilePath}, New String() {})]</InArgument>
+                                              <scg:List x:TypeArguments="InArgument(x:String)" x:Name="__ReferenceID0" Capacity="0" />
                                             </scg:List>
                                           </usau:BackupSlot.BackupValues>
                                         </usau:BackupSlot>
@@ -525,16 +582,12 @@
                                           </usau:BackupSlot.BackupValues>
                                         </usau:BackupSlot>
                                       </ui:SendMail.ConnectionDetailsBackupSlot>
-                                      <ui:SendMail.Files>
-                                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                                          <InArgument x:TypeArguments="x:String">[str_ContractFilePath]</InArgument>
-                                        </scg:List>
-                                      </ui:SendMail.Files>
                                     </ui:SendMail>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="451.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Email sent successfully to &quot; + str_CustomerEmail]" />
                                   </Sequence>
                                 </If.Then>
                                 <If.Else>
-                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,740.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484.8,915.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -557,7 +610,7 @@
                                         <InArgument x:TypeArguments="x:String">[str_RejectTemplate.Replace("{{CCCD}}", str_IDNumber).Replace("{{DATE}}", Now.ToString("dd/MM/yyyy")).Replace("{{REASON}}", "Không đủ điều kiện phê duyệt theo chính sách hiện hành")]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="Existing" Body="[str_FinalRejectBody]" ConnectionId="8affc23e-c6dc-4e58-8981-aad57e972048" ConnectionMode="IntegrationService" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="451.2,332" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="THÔNG BÁO KẾT QUẢ HỒ SƠ MỞ THẺ TÍN DỤNG" To="[str_CustomerEmail]" UseISConnection="True" UseRichTextEditor="True">
+                                    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" ResourceAttachmentList="{x:Null}" ResourceAttachments="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" AttachmentInputMode="Existing" Body="[str_FinalRejectBody]" ConnectionId="8affc23e-c6dc-4e58-8981-aad57e972048" ConnectionMode="IntegrationService" DisplayName="Send SMTP Email" EnableSSL="True" sap:VirtualizedContainerService.HintSize="451.2,340.8" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="THÔNG BÁO KẾT QUẢ HỒ SƠ MỞ THẺ TÍN DỤNG" To="[str_CustomerEmail]" UseISConnection="True" UseRichTextEditor="True">
                                       <ui:SendMail.AttachmentsBackup>
                                         <usau:BackupSlot x:TypeArguments="umame:AttachmentInputMode" StoredValue="Existing">
                                           <usau:BackupSlot.BackupValues>
@@ -576,9 +629,11 @@
                                         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                       </ui:SendMail.Files>
                                     </ui:SendMail>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="451.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Email sent successfully to &quot; + str_CustomerEmail]" />
                                   </Sequence>
                                 </If.Else>
                               </If>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Updated Excel for CustomerID = &quot; + str_IDNumber]" />
                             </Sequence>
                           </If.Then>
                           <If.Else>
