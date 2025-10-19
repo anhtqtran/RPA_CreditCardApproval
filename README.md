@@ -1,6 +1,7 @@
 # Automated Credit Card Approval System 
 ## Introduction and Goal
    The current credit card approval process is still heavily reliant on manual tasks, which leads to significant issues such as long processing times, high error rates, and excessive resource consumption. These shortcomings not only hinder internal operational efficiency but also directly impact customer satisfaction.
+   
    This project was developed to comprehensively solve these problems using a Robotic Process Automation (RPA) solution built on the UiPath platform. The primary goal is to create an automated processing system that runs 24/7 to drastically reduce wait times, ensure complete accuracy, and free employees from repetitive work. This will make the process both flexible and easily scalable to meet evolving business needs.
 ## Key Features
 The bot is programmed to perform a series of tasks automatically:
